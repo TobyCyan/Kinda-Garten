@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e6e02664f22e54293fec8af381ca40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  kidSpawnManager: {fileID: 0}
+  kidSpawnManager: {fileID: 3243053083987996304, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
