@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class StampRallyMiniGame : MonoBehaviour
+public class StampRallyMiniGame : MonoBehaviour, IMiniGameMaster
 {
     [Header("Top Row - Sequence To Follow")]
     [Tooltip("These Images always show the generated sequence.")]
@@ -23,27 +22,18 @@ public class StampRallyMiniGame : MonoBehaviour
     [Header("Optional UI")]
     [SerializeField] private TMP_Text statusText;
 
-    [Header("Failure Display")]
-    [Tooltip("Red cross GameObjects shown one by one after wrong choices.")]
-    [SerializeField] private GameObject[] failureCrosses;
+    [Header("Mini Game UI")]
+    [Tooltip("The root containing the Stamp Rally UI. Keep the master object outside this root.")]
+    [FormerlySerializedAs("gameplayPanel")]
+    [SerializeField] private GameObject miniGameRoot;
 
-    [Header("End Game")]
-    [Tooltip("The panel containing the Stamp Rally gameplay. It will be hidden after success.")]
-    [SerializeField] private GameObject gameplayPanel;
-    [Tooltip("An optional success panel to show after completing one sequence.")]
-    [SerializeField] private GameObject successPanel;
-    [SerializeField, Min(0f)] private float endGameDelay = 0.65f;
+    [Header("Feedback")]
+    [SerializeField, Min(0f)] private float wrongAttemptMessageDuration = 0.75f;
 
-    [Header("Settings")]
-    [SerializeField, Min(1)] private int allowedFailures = 2;
-    [SerializeField] private float feedbackDuration = 0.65f;
-
-    [Header("Events")]
-    public UnityEvent onSequenceCompleted;
+    public event System.Action OnMiniGameCompleted;
 
     private readonly List<int> sequence = new();
     private int currentStep;
-    private int failedAttempts;
     private bool acceptingInput;
 
     private void Awake()
@@ -72,19 +62,41 @@ public class StampRallyMiniGame : MonoBehaviour
             int stampIndex = i;
             stampButtons[i].onClick.AddListener(() => SelectStamp(stampIndex));
         }
+
+        if (miniGameRoot != null && miniGameRoot != gameObject)
+        {
+            miniGameRoot.SetActive(false);
+        }
     }
 
-    private void Start()
+    public void GenerateMiniGame()
     {
-        if (successPanel != null)
+        StopAllCoroutines();
+
+        if (miniGameRoot != null)
         {
-            successPanel.SetActive(false);
+            miniGameRoot.SetActive(true);
         }
 
+        SetStampButtonsInteractable(true);
         GenerateNewSequence();
     }
 
-    public void GenerateNewSequence()
+    public void CleanUpMiniGame()
+    {
+        StopAllCoroutines();
+        acceptingInput = false;
+        SetStampButtonsInteractable(false);
+        sequence.Clear();
+        ClearChosenSlots();
+
+        if (miniGameRoot != null)
+        {
+            miniGameRoot.SetActive(false);
+        }
+    }
+
+    private void GenerateNewSequence()
     {
         if (stampButtons.Length < 2 ||
             sequenceDisplaySlots.Length == 0 ||
@@ -103,7 +115,7 @@ public class StampRallyMiniGame : MonoBehaviour
             // Prevent the same stamp from appearing twice in a row.
             do
             {
-                nextStamp = Random.Range(0, stampButtons.Length);
+                nextStamp = UnityEngine.Random.Range(0, stampButtons.Length);
             }
             while (i > 0 && nextStamp == sequence[i - 1]);
 
@@ -111,12 +123,10 @@ public class StampRallyMiniGame : MonoBehaviour
         }
 
         currentStep = 0;
-        failedAttempts = 0;
         acceptingInput = true;
 
         DrawSequence();
         SetStatus("Click the stamps in this order!");
-        UpdateFailureCrosses();
     }
 
     private void SelectStamp(int stampIndex)
@@ -133,7 +143,7 @@ public class StampRallyMiniGame : MonoBehaviour
 
             if (currentStep >= sequence.Count)
             {
-                StartCoroutine(CompleteSequence());
+                StartCoroutine(CompleteMiniGame());
             }
             else
             {
@@ -143,53 +153,34 @@ public class StampRallyMiniGame : MonoBehaviour
             return;
         }
 
-        StartCoroutine(HandleWrongStamp(stampIndex));
+        StartCoroutine(HandleWrongAttempt(stampIndex));
     }
 
-    private IEnumerator HandleWrongStamp(int stampIndex)
+    private IEnumerator HandleWrongAttempt(int stampIndex)
     {
         acceptingInput = false;
         ShowChosenStamp(currentStep, stampIndex);
-        failedAttempts++;
-        SetStatus("Wrong stamp!");
-        UpdateFailureCrosses();
+        SetStatus("Wrong attempt!");
 
-        yield return new WaitForSeconds(feedbackDuration);
+        yield return new WaitForSeconds(wrongAttemptMessageDuration);
 
-        if (failedAttempts >= allowedFailures)
-        {
-            SetStatus("Two misses — here is a new sequence!");
-            yield return new WaitForSeconds(feedbackDuration);
-            GenerateNewSequence();
-        }
-        else
-        {
-            // First failure: keep the sequence, but restart its clicked progress.
-            currentStep = 0;
-            ClearChosenSlots();
-            SetStatus("Try the same sequence again.");
-            acceptingInput = true;
-        }
+        GenerateNewSequence();
     }
 
-    private IEnumerator CompleteSequence()
+    private IEnumerator CompleteMiniGame()
     {
         acceptingInput = false;
         SetStampButtonsInteractable(false);
         SetStatus("Sequence complete!");
-        onSequenceCompleted?.Invoke();
 
-        yield return new WaitForSeconds(endGameDelay);
+        yield return new WaitForSeconds(wrongAttemptMessageDuration);
 
-        if (successPanel != null)
+        if (miniGameRoot != null)
         {
-            successPanel.SetActive(true);
+            miniGameRoot.SetActive(false);
         }
 
-        if (gameplayPanel != null)
-        {
-            gameplayPanel.SetActive(false);
-        }
+        OnMiniGameCompleted?.Invoke();
     }
 
     private void SetStampButtonsInteractable(bool interactable)
@@ -236,22 +227,6 @@ public class StampRallyMiniGame : MonoBehaviour
             chosenStampSlots[i].gameObject.SetActive(isUsed);
             chosenStampSlots[i].sprite = null;
             chosenStampSlots[i].enabled = false;
-        }
-    }
-
-    private void UpdateFailureCrosses()
-    {
-        if (failureCrosses == null)
-        {
-            return;
-        }
-
-        for (int i = 0; i < failureCrosses.Length; i++)
-        {
-            if (failureCrosses[i] != null)
-            {
-                failureCrosses[i].SetActive(i < failedAttempts);
-            }
         }
     }
 
