@@ -6,7 +6,8 @@ public class MiniGameManager : MonoBehaviour
 {
     public static MiniGameManager Instance { get; private set; }
 
-    private List<IMiniGameGenerator> generators = new();
+    private List<IMiniGameMaster> gameMasters = new();
+    private IMiniGameMaster currentGameMaster;
 
     private void Awake()
     {
@@ -19,7 +20,7 @@ public class MiniGameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        generators = new List<IMiniGameGenerator>(FindObjectsByType<MonoBehaviour>().OfType<IMiniGameGenerator>());
+        gameMasters = new List<IMiniGameMaster>(FindObjectsByType<MonoBehaviour>().OfType<IMiniGameMaster>());
     }
 
     private void Start()
@@ -27,13 +28,26 @@ public class MiniGameManager : MonoBehaviour
         GenerateMiniGame();
     }
 
+    // Should be called when a kid is interacted with or when a player fails a mini-game
     public void GenerateMiniGame()
     {
-        var generator = generators[Random.Range(0, generators.Count)];
-        if (generator == null)
+        var gameMaster = gameMasters[Random.Range(0, gameMasters.Count)];
+        if (gameMaster == null)
         {
             return;
         }
-        generator.GenerateMiniGame();
+        currentGameMaster = gameMaster;
+        gameMaster.GenerateMiniGame();
+        gameMaster.OnMiniGameCompleted += OnMiniGameCompleted;
+    }
+
+    private void OnMiniGameCompleted()
+    {
+        if (currentGameMaster == null)
+        {
+            return;
+        }
+        currentGameMaster.CleanUpMiniGame();
+        currentGameMaster.OnMiniGameCompleted -= OnMiniGameCompleted;
     }
 }

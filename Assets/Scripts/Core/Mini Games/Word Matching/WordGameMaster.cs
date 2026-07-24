@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using static UnityEngine.Random;
 
-public class WordPuzzleGenerator : MonoBehaviour, IMiniGameGenerator
+public class WordGameMaster : MonoBehaviour, IMiniGameMaster
 {
     [SerializeField] private TextMeshProUGUI definitionText;
     [SerializeField] private GameObject letterBlockPrefab;
@@ -19,12 +21,16 @@ public class WordPuzzleGenerator : MonoBehaviour, IMiniGameGenerator
     [SerializeField] private Transform displayedRowCenter;
     [SerializeField] private Transform selectableRowCenter;
 
+    private PuzzleData currentPuzzleData;
+
     public readonly struct PuzzleData
     {
+        public string Word { get; }
         public List<SelectableLetterBlock> SelectableLetterBlocks { get; }
         public List<LetterBlock> DisplayedLetterBlocks { get; }
-        public PuzzleData(List<SelectableLetterBlock> selectableLetterBlocks, List<LetterBlock> displayedLetterBlocks)
+        public PuzzleData(string word, List<SelectableLetterBlock> selectableLetterBlocks, List<LetterBlock> displayedLetterBlocks)
         {
+            Word = word;
             SelectableLetterBlocks = selectableLetterBlocks;
             DisplayedLetterBlocks = displayedLetterBlocks;
         }
@@ -41,15 +47,33 @@ public class WordPuzzleGenerator : MonoBehaviour, IMiniGameGenerator
         }
     }
 
+    public event Action OnMiniGameCompleted;
+
     public void GenerateMiniGame()
     {
         var word = WordPool.GetRandomWord();
         definitionText.text = word.Definition;
 
         PuzzleData puzzleData = GetPuzzleData(word.Word);
-
+        currentPuzzleData = puzzleData;
         ArrangeRow(puzzleData.DisplayedLetterBlocks, displayedRowCenter);
         ArrangeRow(puzzleData.SelectableLetterBlocks, selectableRowCenter);
+    }
+
+    public void CleanUpMiniGame()
+    {
+        definitionText.enabled = false;
+        foreach(var lb in currentPuzzleData.DisplayedLetterBlocks)
+        {
+            if (lb != null)
+                Destroy(lb.gameObject);
+        }
+
+        foreach(var lb in currentPuzzleData.SelectableLetterBlocks)
+        {
+            if (lb != null)
+                Destroy(lb.gameObject);
+        }
     }
 
     private PuzzleData GetPuzzleData(string word)
@@ -68,7 +92,7 @@ public class WordPuzzleGenerator : MonoBehaviour, IMiniGameGenerator
 
         // Randomly remove letters from the word
         int maxMissingLetters = Mathf.Max(MIN_MISSING_LETTERS, word.Length - 2);
-        int missingLettersCount = Random.Range(MIN_MISSING_LETTERS, maxMissingLetters + 1);
+        int missingLettersCount = Range(MIN_MISSING_LETTERS, maxMissingLetters + 1);
         char[] charArray = upperWord.ToCharArray();
         for (int i = 0; i < missingLettersCount; i++)
         {
@@ -93,14 +117,14 @@ public class WordPuzzleGenerator : MonoBehaviour, IMiniGameGenerator
         }
 
         // Generate extra blocks
-        int extraBlocksCount = Random.Range(MIN_EXTRA_BLOCKS, MAX_EXTRA_BLOCKS + 1);
+        int extraBlocksCount = Range(MIN_EXTRA_BLOCKS, MAX_EXTRA_BLOCKS + 1);
         for (int i = 0; i < extraBlocksCount; i++)
         {
-            char randomLetter = (char)Random.Range('A', 'Z' + 1);
+            char randomLetter = (char)Range('A', 'Z' + 1);
             GenerateLetterBlockObject(randomLetter, selectableLetterBlockPrefab, selectableLetterBlocks);
         }
         selectableLetterBlocks.Shuffle();
-        return new(selectableLetterBlocks, displayedLetterBlocks);
+        return new(word, selectableLetterBlocks, displayedLetterBlocks);
     }
 
     private DisplayedLetter[] FromCharArray(char[] charArray, HashSet<int> missingPositions)
@@ -120,6 +144,21 @@ public class WordPuzzleGenerator : MonoBehaviour, IMiniGameGenerator
         {
             lb.Init(letter);
             letterBlocks.Add(lb);
+            if (TryGetComponent<EmptyLetterBlock>(out var elb))
+            {
+                elb.OnCorrectLetterDropped.AddListener(CheckWord);
+            }
+        }
+    }
+
+    private void CheckWord()
+    {
+        string currentWord = currentPuzzleData.Word;
+        string displayedWord = currentPuzzleData.DisplayedLetterBlocks
+                .Select(lb => lb.Letter).Aggregate("", (acc, c) => acc + c);
+        if (currentWord.Equals(displayedWord))
+        {
+            OnMiniGameCompleted?.Invoke();
         }
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 public class LetterBlock : MonoBehaviour
 {
     protected TextMeshPro letterText;
+    private char letter;
+    public char Letter => letter;
 
     public const char EMPTY_LETTER = ' ';
 
@@ -18,5 +20,6 @@ public class LetterBlock : MonoBehaviour
         {
             letterText.text = letter.ToString().ToUpper();
         }
+        this.letter = letter;
     }
 }

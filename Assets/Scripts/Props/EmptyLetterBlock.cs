@@ -1,10 +1,11 @@
 using UnityEngine.EventSystems;
 using TMPro;
-using UnityEngine;
+using UnityEngine.Events;
 
 public class EmptyLetterBlock : LetterBlock, IDropHandler
 {
     private char supposedLetter;
+    public UnityEvent OnCorrectLetterDropped;
 
     public override void Init(char letter)
     {
