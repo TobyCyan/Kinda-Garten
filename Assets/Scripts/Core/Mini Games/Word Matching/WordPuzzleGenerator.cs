@@ -13,6 +13,11 @@ public class WordPuzzleGenerator : MonoBehaviour
     private const int MIN_EXTRA_BLOCKS = 2;
     private const int MAX_EXTRA_BLOCKS = 4;
 
+    [SerializeField] private float rowWidth = 7.5f;   // total width available for the row
+    [SerializeField] private int maxVisibleBlocks = 8;
+    [SerializeField] private RectTransform displayedRowCenter;
+    [SerializeField] private RectTransform selectableRowCenter;
+
     public readonly struct PuzzleData
     {
         public List<SelectableLetterBlock> SelectableLetterBlocks { get; }
@@ -36,7 +41,8 @@ public class WordPuzzleGenerator : MonoBehaviour
 
         PuzzleData puzzleData = GetPuzzleData(word.Word);
 
-        // TODO: Arrange the blocks in the scene.
+        ArrangeRow(puzzleData.DisplayedLetterBlocks, displayedRowCenter);
+        ArrangeRow(puzzleData.SelectableLetterBlocks, selectableRowCenter);
     }
 
     private PuzzleData GetPuzzleData(string word)
@@ -93,6 +99,40 @@ public class WordPuzzleGenerator : MonoBehaviour
             lb.Init(letter);
             letterBlocks.Add(lb);
         }
+    }
+
+    private void ArrangeRow<T>(IReadOnlyList<T> blocks, RectTransform rowCenter) where T : LetterBlock
+    {
+        if (blocks == null || blocks.Count == 0 || rowCenter == null)
+            return;
+
+        int count = Mathf.Min(blocks.Count, maxVisibleBlocks);
+
+        // If there is only one block, center it exactly.
+        if (count == 1)
+        {
+            SetBlockPosition(blocks[0].transform as RectTransform, rowCenter, Vector2.zero);
+            return;
+        }
+
+        // Fit the row inside a fixed width and center it.
+        float spacing = rowWidth / (count - 1);
+        float startX = -rowWidth * 0.5f;
+
+        for (int i = 0; i < count; i++)
+        {
+            float x = startX + (i * spacing);
+            SetBlockPosition(blocks[i].transform as RectTransform, rowCenter, new Vector2(x, 0f));
+        }
+    }
+
+    private void SetBlockPosition(RectTransform block, RectTransform parent, Vector2 anchoredPos)
+    {
+        if (block == null || parent == null)
+            return;
+
+        block.SetParent(parent, false);
+        block.anchoredPosition = anchoredPos;
     }
 }
 
