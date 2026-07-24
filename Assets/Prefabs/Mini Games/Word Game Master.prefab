@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4600738487270726567}
   - component: {fileID: 7972332109534969770}
   m_Layer: 0
-  m_Name: Word Puzzle Generator
+  m_Name: Word Game Master
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
