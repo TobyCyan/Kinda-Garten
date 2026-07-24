@@ -3,7 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-public class WordPuzzleGenerator : MonoBehaviour
+public class WordPuzzleGenerator : MonoBehaviour, IMiniGameGenerator
 {
     [SerializeField] private TextMeshProUGUI definitionText;
     [SerializeField] private GameObject letterBlockPrefab;
@@ -41,12 +41,7 @@ public class WordPuzzleGenerator : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        GeneratePuzzle();
-    }
-
-    public void GeneratePuzzle()
+    public void GenerateMiniGame()
     {
         var word = WordPool.GetRandomWord();
         definitionText.text = word.Definition;

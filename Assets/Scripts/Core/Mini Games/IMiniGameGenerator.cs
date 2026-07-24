@@ -1,0 +1,4 @@
+interface IMiniGameGenerator
+{
+    void GenerateMiniGame();
+}

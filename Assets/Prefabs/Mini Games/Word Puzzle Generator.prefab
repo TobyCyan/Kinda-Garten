@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1429730413072885633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4600738487270726567}
+  - component: {fileID: 7972332109534969770}
+  m_Layer: 0
+  m_Name: Word Puzzle Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4600738487270726567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429730413072885633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.63521, y: 0.02845, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7972332109534969770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1429730413072885633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fcc36e45b783a34485ea3e3ee5e41ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WordPuzzleGenerator
+  definitionText: {fileID: 0}
+  letterBlockPrefab: {fileID: 8496427340677543610, guid: 355f6b8daa4fa504faca8cc67c043b4b, type: 3}
+  selectableLetterBlockPrefab: {fileID: 4975740115277074539, guid: 527f7aa33192dc14e82464d0033b833e, type: 3}
+  emptyLetterBlockPrefab: {fileID: 3226250498084639275, guid: 3c39dea9aaac1f14a8dd8f129138f555, type: 3}
+  rowWidth: 7.5
+  maxVisibleBlocks: 12
+  displayedRowCenter: {fileID: 0}
+  selectableRowCenter: {fileID: 0}
