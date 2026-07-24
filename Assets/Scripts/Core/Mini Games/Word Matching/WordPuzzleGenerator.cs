@@ -88,6 +88,7 @@ public class WordPuzzleGenerator : MonoBehaviour
             char randomLetter = (char)Random.Range('A', 'Z' + 1);
             GenerateLetterBlockObject(randomLetter, selectableLetterBlockPrefab, selectableLetterBlocks);
         }
+        selectableLetterBlocks.Shuffle();
         return new(selectableLetterBlocks, displayedLetterBlocks);
     }
 
