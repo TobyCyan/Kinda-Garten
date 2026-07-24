@@ -13,6 +13,7 @@ public class WordPool
         }
     }
 
+    // Each word should have minimum 3 letters.
     private static readonly WordData[] words = new WordData[]
     {
         new("apple", "A red round-shaped fruit."),
