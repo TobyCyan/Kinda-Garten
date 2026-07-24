@@ -15,7 +15,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
     private const int MIN_MISSING_LETTERS = 2;
     private const int MAX_MISSING_LETTERS = 3;
     private const int MIN_EXTRA_BLOCKS = 2;
-    private const int MAX_EXTRA_BLOCKS = 4;
+    private const int MAX_EXTRA_BLOCKS = 3;
 
     [SerializeField] private float rowWidth = 7.5f;   // total width available for the row
     [SerializeField] private int maxVisibleBlocks = 8;
@@ -92,7 +92,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
         HashSet<int> missingPositions = new();
 
         // Randomly remove letters from the word
-        int missingLettersCount = Range(MIN_MISSING_LETTERS, MAX_MISSING_LETTERS);
+        int missingLettersCount = Range(MIN_MISSING_LETTERS, MAX_MISSING_LETTERS + 1);
         char[] charArray = upperWord.ToCharArray();
         for (int i = 0; i < missingLettersCount; i++)
         {
