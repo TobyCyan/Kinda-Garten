@@ -182,8 +182,9 @@ MonoBehaviour:
   definitionText: {fileID: 291079135}
   letterBlockPrefab: {fileID: 8496427340677543610, guid: 355f6b8daa4fa504faca8cc67c043b4b, type: 3}
   selectableLetterBlockPrefab: {fileID: 4975740115277074539, guid: 527f7aa33192dc14e82464d0033b833e, type: 3}
+  emptyLetterBlockPrefab: {fileID: 3226250498084639275, guid: 3c39dea9aaac1f14a8dd8f129138f555, type: 3}
   rowWidth: 7.5
-  maxVisibleBlocks: 8
+  maxVisibleBlocks: 12
   displayedRowCenter: {fileID: 15147278}
   selectableRowCenter: {fileID: 517528686}
 --- !u!4 &70765408
@@ -285,8 +286,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 27
+  m_fontSizeBase: 27
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

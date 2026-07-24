@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class LetterBlock : MonoBehaviour
 {
-    private TextMeshPro letterText;
+    protected TextMeshPro letterText;
+
+    public const char EMPTY_LETTER = ' ';
 
     private void Awake()
     {
         letterText = GetComponentInChildren<TextMeshPro>();
     }
 
-    public void Init(char letter)
+    public virtual void Init(char letter)
     {
         if (letterText != null)
         {

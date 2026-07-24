@@ -8,6 +8,7 @@ public class WordPuzzleGenerator : MonoBehaviour
     [SerializeField] private TextMeshProUGUI definitionText;
     [SerializeField] private GameObject letterBlockPrefab;
     [SerializeField] private GameObject selectableLetterBlockPrefab;
+    [SerializeField] private GameObject emptyLetterBlockPrefab;
 
     private const int MIN_MISSING_LETTERS = 2;
     private const int MIN_EXTRA_BLOCKS = 2;
@@ -26,6 +27,17 @@ public class WordPuzzleGenerator : MonoBehaviour
         {
             SelectableLetterBlocks = selectableLetterBlocks;
             DisplayedLetterBlocks = displayedLetterBlocks;
+        }
+    }
+
+    public readonly struct DisplayedLetter
+    {
+        public char Letter { get; }
+        public bool IsMissing { get; }
+        public DisplayedLetter(char letter, bool isMissing)
+        {
+            Letter = letter;
+            IsMissing = isMissing;
         }
     }
 
@@ -57,22 +69,26 @@ public class WordPuzzleGenerator : MonoBehaviour
         positions.Shuffle();
 
         List<char> missingLetters = new();
+        HashSet<int> missingPositions = new();
 
         // Randomly remove letters from the word
         int maxMissingLetters = Mathf.Max(MIN_MISSING_LETTERS, word.Length - 2);
         int missingLettersCount = Random.Range(MIN_MISSING_LETTERS, maxMissingLetters + 1);
-        char[] displayedLetters = word.ToCharArray();
+        char[] charArray = upperWord.ToCharArray();
         for (int i = 0; i < missingLettersCount; i++)
         {
             int pos = positions[i];
-            displayedLetters[pos] = '_';
+            missingPositions.Add(pos);
             missingLetters.Add(upperWord[pos]);
         }
 
+        DisplayedLetter[] displayedLetters = FromCharArray(charArray, missingPositions);
+
         // Generate letter blocks for the displayed letters
-        foreach (char letter in displayedLetters)
+        foreach (DisplayedLetter dl in displayedLetters)
         {
-            GenerateLetterBlockObject(letter, letterBlockPrefab, displayedLetterBlocks);
+            GameObject prefab = dl.IsMissing ? emptyLetterBlockPrefab : letterBlockPrefab;
+            GenerateLetterBlockObject(dl.Letter, prefab, displayedLetterBlocks);
         }
 
         // Generate letter blocks for the missing letters
@@ -90,6 +106,16 @@ public class WordPuzzleGenerator : MonoBehaviour
         }
         selectableLetterBlocks.Shuffle();
         return new(selectableLetterBlocks, displayedLetterBlocks);
+    }
+
+    private DisplayedLetter[] FromCharArray(char[] charArray, HashSet<int> missingPositions)
+    {
+        DisplayedLetter[] displayedLetters = new DisplayedLetter[charArray.Length];
+        for (int i = 0; i < charArray.Length; i++)
+        {
+            displayedLetters[i] = new DisplayedLetter(charArray[i], missingPositions.Contains(i));
+        }
+        return displayedLetters;
     }
 
     private void GenerateLetterBlockObject<T>(char letter, GameObject letterBlockPrefab, List<T> letterBlocks) where T : LetterBlock
