@@ -144,18 +144,19 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
         {
             lb.Init(letter);
             letterBlocks.Add(lb);
-            if (TryGetComponent<EmptyLetterBlock>(out var elb))
+            if (letterBlockGo.TryGetComponent<EmptyLetterBlock>(out var elb))
             {
-                elb.OnCorrectLetterDropped.AddListener(CheckWord);
+                elb.OnCorrectLetterDropped += CheckWord;
             }
         }
     }
 
     private void CheckWord()
     {
-        string currentWord = currentPuzzleData.Word;
+        string currentWord = currentPuzzleData.Word.ToLower();
         string displayedWord = currentPuzzleData.DisplayedLetterBlocks
-                .Select(lb => lb.Letter).Aggregate("", (acc, c) => acc + c);
+                .Select(lb => lb.GetDisplayedLetter()).Aggregate("", (acc, c) => acc + c)
+                .ToLower();
         if (currentWord.Equals(displayedWord))
         {
             OnMiniGameCompleted?.Invoke();
@@ -203,7 +204,7 @@ public static class ListExtensions
     {
         for (int i = list.Count - 1; i > 0; i--)
         {
-            int j = Random.Range(0, i + 1);
+            int j = Range(0, i + 1);
             (list[i], list[j]) = (list[j], list[i]);
         }
     }

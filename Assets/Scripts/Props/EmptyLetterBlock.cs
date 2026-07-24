@@ -1,11 +1,11 @@
 using UnityEngine.EventSystems;
 using TMPro;
-using UnityEngine.Events;
+using System;
 
 public class EmptyLetterBlock : LetterBlock, IDropHandler
 {
+    public event Action OnCorrectLetterDropped;
     private char supposedLetter;
-    public UnityEvent OnCorrectLetterDropped;
 
     public override void Init(char letter)
     {
@@ -23,6 +23,7 @@ public class EmptyLetterBlock : LetterBlock, IDropHandler
             {
                 Destroy(droppedLetterBlock.gameObject);
                 letterText.text = supposedLetter.ToString().ToUpper();
+                OnCorrectLetterDropped?.Invoke();
             }
         }
     }
