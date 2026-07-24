@@ -15,7 +15,6 @@ public class KidSpawnManager : MonoBehaviour
     private void Start()
     {
         seats = FindObjectsByType<Seat>().ToList();
-        SpawnKidAtRandomSeat();
     }
 
     public void SpawnKidAtRandomSeat()
