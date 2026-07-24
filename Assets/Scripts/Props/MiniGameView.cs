@@ -5,13 +5,13 @@ public class MiniGameView : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer baseRenderer;
 
-    public void ShowMiniGame(SeatColor color)
+    public void ShowView(SeatColor seatColor)
     {
         gameObject.SetActive(true);
-        baseRenderer.sprite = SeatSpriteStore.GetTableSprite(color);
+        baseRenderer.sprite = SeatSpriteStore.GetTableSprite(seatColor);
     }
 
-    public void HideMiniGame()
+    public void HideView()
     {
         gameObject.SetActive(false);
     }
