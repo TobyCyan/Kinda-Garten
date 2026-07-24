@@ -15,8 +15,8 @@ public class WordPuzzleGenerator : MonoBehaviour
 
     [SerializeField] private float rowWidth = 7.5f;   // total width available for the row
     [SerializeField] private int maxVisibleBlocks = 8;
-    [SerializeField] private RectTransform displayedRowCenter;
-    [SerializeField] private RectTransform selectableRowCenter;
+    [SerializeField] private Transform displayedRowCenter;
+    [SerializeField] private Transform selectableRowCenter;
 
     public readonly struct PuzzleData
     {
@@ -102,7 +102,7 @@ public class WordPuzzleGenerator : MonoBehaviour
         }
     }
 
-    private void ArrangeRow<T>(IReadOnlyList<T> blocks, RectTransform rowCenter) where T : LetterBlock
+    private void ArrangeRow<T>(IReadOnlyList<T> blocks, Transform rowCenter) where T : LetterBlock
     {
         if (blocks == null || blocks.Count == 0 || rowCenter == null)
             return;
@@ -112,7 +112,7 @@ public class WordPuzzleGenerator : MonoBehaviour
         // If there is only one block, center it exactly.
         if (count == 1)
         {
-            SetBlockPosition(blocks[0].transform as RectTransform, rowCenter, Vector2.zero);
+            SetBlockPosition(blocks[0].transform, rowCenter, Vector2.zero);
             return;
         }
 
@@ -123,17 +123,17 @@ public class WordPuzzleGenerator : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             float x = startX + (i * spacing);
-            SetBlockPosition(blocks[i].transform as RectTransform, rowCenter, new Vector2(x, 0f));
+            SetBlockPosition(blocks[i].transform, rowCenter, new Vector2(x, 0f));
         }
     }
 
-    private void SetBlockPosition(RectTransform block, RectTransform parent, Vector2 anchoredPos)
+    private void SetBlockPosition(Transform block, Transform parent, Vector2 localPos)
     {
         if (block == null || parent == null)
             return;
 
         block.SetParent(parent, false);
-        block.anchoredPosition = anchoredPos;
+        block.localPosition = localPos;
     }
 }
 
