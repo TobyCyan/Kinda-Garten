@@ -1,14 +1,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class KidSpawnManager : MonoBehaviour
 {
+    [SerializeField] private KidController kidController;
+    [SerializeField] private float minMoodTimer;
+    [SerializeField] private float maxMoodTimer;
+    [SerializeField] private float minCooldownTimer;
+    [SerializeField] private float maxCooldownTimer;
     private List<Seat> seats = new();
 
     private void Start()
     {
         seats = FindObjectsByType<Seat>().ToList();
+        SpawnKidAtRandomSeat();
     }
 
     public void SpawnKidAtRandomSeat()
@@ -16,14 +23,33 @@ public class KidSpawnManager : MonoBehaviour
         Seat randomSeat = GetRandomUnoccupiedSeat();
         if (randomSeat != null)
         {
-            // TODO: Spawn the kid prefab at the randomSeat's position
-            print($"Spawning kid at seat: {randomSeat.name}");
+            var kidObject = Instantiate(kidController, randomSeat.SeatTransform);
+
+            var randomMoodTimer = Random.Range(minMoodTimer, maxMoodTimer + 1);
+            var randomCooldownTimer = Random.Range(minCooldownTimer, maxCooldownTimer + 1);
+            kidObject.OnCooldownTimerFinished += KidObject_OnCooldownTimerFinished;
+            kidObject.OnMoodTimerFinished += KidObject_OnMoodTimerFinished;
+
+            kidObject.SetupData(randomMoodTimer, randomCooldownTimer);
             randomSeat.IsOccupied = true;
         }
         else
         {
             Debug.LogWarning("No unoccupied seats available for spawning a kid.");
         }
+    }
+
+    private void KidObject_OnMoodTimerFinished()
+    {
+
+    }
+
+    private void KidObject_OnCooldownTimerFinished(KidController kidController)
+    {
+        var randomMoodTimer = Random.Range(minMoodTimer, maxMoodTimer + 1);
+        var randomCooldownTimer = Random.Range(minCooldownTimer, maxCooldownTimer + 1);
+
+        kidController.SetupData(randomMoodTimer, randomCooldownTimer);
     }
 
     private Seat GetRandomUnoccupiedSeat()
