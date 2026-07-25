@@ -17,7 +17,7 @@ public class KidSpawnManager : MonoBehaviour
 
     private List<Seat> seats = new();
 
-    private readonly Vector3 _spriteOffset = new Vector3(0f, -0.08f, 0f);
+    [SerializeField] private float _spriteYOffset = -0.08f;
 
     private void Start()
     {
@@ -57,9 +57,10 @@ public class KidSpawnManager : MonoBehaviour
         if (randomSeat != null)
         {
             var kidObject = Instantiate(kidController, randomSeat.SeatTransform);
+            randomSeat.Kid = kidObject;
 
             var randomMoodTimer = Random.Range(minMoodTimer, maxMoodTimer + 1);
-            kidObject.transform.localPosition = _spriteOffset;
+            kidObject.transform.localPosition = new Vector3(0f, _spriteYOffset, 0f);
 
             var randomCooldownTimer = Random.Range(minCooldownTimer, maxCooldownTimer + 1);
             kidObject.OnCooldownTimerFinished += KidObject_OnCooldownTimerFinished;

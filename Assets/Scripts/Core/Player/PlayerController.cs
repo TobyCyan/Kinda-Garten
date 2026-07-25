@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 20.0f;
     [SerializeField] private InputActionReference moveActionReference;
     [SerializeField] private InputActionReference holdActionReference;
+    [SerializeField] private InputActionReference interactActionReference;
     [SerializeField] private Tilemap walkable;
     [SerializeField] private Tilemap obstacle;
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isHolding = false;
     private IHoldInteractable currentHoldInteractable;
+    private Seat currentInteractableSeat;
     
 
     private void Start()
@@ -86,6 +88,9 @@ public class PlayerController : MonoBehaviour
         holdActionReference.action.Enable();
         holdActionReference.action.performed += OnHoldPerformed;
         holdActionReference.action.canceled += OnHoldCanceled;
+
+        interactActionReference.action.Enable();
+        interactActionReference.action.performed += OnInteractPerformed;
     }
 
     private void OnDisable()
@@ -96,6 +101,15 @@ public class PlayerController : MonoBehaviour
         holdActionReference.action.performed -= OnHoldPerformed;
         holdActionReference.action.canceled -= OnHoldCanceled;
         holdActionReference.action.Disable();
+
+        interactActionReference.action.performed -= OnInteractPerformed;
+        interactActionReference.action.Disable();
+    }
+
+    //Should TriggerMiniGame for Mini Game Integration
+    private void OnInteractPerformed(InputAction.CallbackContext ctx) 
+    {
+        currentInteractableSeat.TriggerKidCooldown();
     }
 
     private void OnMovePerformed(InputAction.CallbackContext ctx)
@@ -149,6 +163,12 @@ public class PlayerController : MonoBehaviour
             currentHoldInteractable = holdInteractable;
             currentHoldInteractable.OnHoldCompleted += HoldCleanUp;
         }
+
+        if (collision.TryGetComponent<Seat>(out var seat)) 
+        {
+            currentInteractableSeat = seat;
+            currentInteractableSeat.IsInteractable = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -162,6 +182,12 @@ public class PlayerController : MonoBehaviour
                 currentHoldInteractable.OnHoldCompleted -= HoldCleanUp;
                 currentHoldInteractable = null;
             }
+        }
+
+        if (collision.TryGetComponent<Seat>(out var seat)) 
+        {
+            currentInteractableSeat = seat;
+            currentInteractableSeat.IsInteractable = false;
         }
     }
 }

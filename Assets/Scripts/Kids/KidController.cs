@@ -61,7 +61,7 @@ public class KidController : MonoBehaviour
         }
     }
 
-    private void TriggerCooldown()
+    public void TriggerCooldown()
     {
         _isInCooldown = true;
         moodTimer.SetVisiblity(false);

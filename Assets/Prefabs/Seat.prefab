@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 1018241501936114432}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Seat
   stoolRenderer: {fileID: 6617776554057526935}
   tableRenderer: {fileID: 5993406745444780823}
+  kid: {fileID: 0}
 --- !u!61 &8297129028022813894
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -171,11 +172,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0019025803, y: -0.2568375}
+  m_Offset: {x: 0.018403769, y: -0.93709725}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -185,7 +186,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4026146, y: 0.25802517}
+  m_Size: {x: 0.6056771, y: 0.8062941}
   m_EdgeRadius: 0
 --- !u!1 &6918699293966004075
 GameObject:
@@ -213,7 +214,7 @@ Transform:
   m_GameObject: {fileID: 6918699293966004075}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.45, z: 0}
+  m_LocalPosition: {x: 0, y: -0.65, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
