@@ -158,6 +158,7 @@ public class PlayerController : MonoBehaviour
             // TODO: Hide UI prompt for holding interaction
             if (currentHoldInteractable == holdInteractable)
             {
+                HoldCleanUp();
                 currentHoldInteractable.OnHoldCompleted -= HoldCleanUp;
                 currentHoldInteractable = null;
             }
