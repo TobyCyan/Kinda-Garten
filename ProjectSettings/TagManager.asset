@@ -47,6 +47,9 @@ TagManager:
   - name: GameObjects
     uniqueID: 1515563023
     locked: 0
+  - name: GameObjectsUI
+    uniqueID: 911093655
+    locked: 0
   - name: World Space UI
     uniqueID: 4045343537
     locked: 0
