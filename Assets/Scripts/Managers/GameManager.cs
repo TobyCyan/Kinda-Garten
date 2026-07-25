@@ -33,4 +33,9 @@ public class GameManager : MonoBehaviour
         kidSpawnManager.Init();
         trashPileSpawnManager.Init();
     }
+
+    public bool IsCellOccupied(Vector3Int cell)
+    {
+        return trashPileSpawnManager.IsCellOccupied(cell);
+    }
 }
