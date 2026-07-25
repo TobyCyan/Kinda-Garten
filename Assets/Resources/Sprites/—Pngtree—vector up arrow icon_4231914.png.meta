@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 61f766712ce13f7448a9356412ecfda6
+guid: 0ecbbdd65c64fc041aa01c7098df418e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2810812690163378127
-    second: image-from-rawpixel-id-6664430-png_0
+      213: 2808817498485673607
+    second: "\u2014Pngtree\u2014vector up arrow icon_4231914_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: image-from-rawpixel-id-6664430-png_0
+      name: "\u2014Pngtree\u2014vector up arrow icon_4231914_0"
       rect:
         serializedVersion: 2
-        x: 38
-        y: 38
-        width: 724
-        height: 724
+        x: 179
+        y: 125
+        width: 667
+        height: 771
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc72957df33020720800000000000000
-      internalID: 2810812690163378127
+      spriteID: 78ec32412aceaf620800000000000000
+      internalID: 2808817498485673607
       vertices: []
       indices: 
       edges: []
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      image-from-rawpixel-id-6664430-png_0: 2810812690163378127
+      "\u2014Pngtree\u2014vector up arrow icon_4231914_0": 2808817498485673607
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
