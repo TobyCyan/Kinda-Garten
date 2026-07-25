@@ -93,7 +93,7 @@
                     "id": "6340be91-562a-454c-945a-66fa2bbf2992",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "Hold",
+                    "interactions": "Hold(duration=0.1)",
                     "initialStateCheck": false
                 }
             ],
@@ -486,7 +486,7 @@
                 {
                     "name": "",
                     "id": "07096eba-a189-4eee-ae1a-c03db189e729",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
