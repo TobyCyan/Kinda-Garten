@@ -31,6 +31,7 @@ public class TrashPile : MonoBehaviour, IHoldInteractable
         if (cleanupProgress >= cleanupTime)
         {
             OnHoldCompleted?.Invoke();
+            OnHoldCompleted = null;
             Destroy(gameObject);
         }
     }

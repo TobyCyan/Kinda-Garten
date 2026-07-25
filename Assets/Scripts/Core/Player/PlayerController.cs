@@ -70,6 +70,11 @@ public class PlayerController : MonoBehaviour
             return false;
         }
 
+        if (GameManager.Instance.IsCellOccupied(targetCell))
+        {
+            return false;
+        }
+
         return true;
     }
 
