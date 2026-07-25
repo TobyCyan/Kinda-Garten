@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 public static class SceneTransitionManager
 {
     private static int currentBuildIndex = 0;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    private static void ResetStatics()
+    {
+        currentBuildIndex = 0;
+    }
+
     public static async void LoadHome()
     {
         currentBuildIndex = 0;
