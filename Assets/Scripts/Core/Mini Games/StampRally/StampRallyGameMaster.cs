@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class StampRallyMiniGame : MonoBehaviour, IMiniGameMaster
+public class StampRallyGameMaster : MonoBehaviour, IMiniGameMaster
 {
     [Header("Top Row - Sequence To Follow")]
     [Tooltip("These Images always show the generated sequence.")]
