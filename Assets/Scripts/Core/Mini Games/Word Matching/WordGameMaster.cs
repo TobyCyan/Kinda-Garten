@@ -54,6 +54,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
     {
         var word = WordPool.GetRandomWord();
         definitionText.text = word.Definition;
+        definitionText.enabled = true;
 
         PuzzleData puzzleData = GetPuzzleData(word.Word);
         currentPuzzleData = puzzleData;
