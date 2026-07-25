@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private KidSpawnManager kidSpawnManager;
     [SerializeField] private TrashPileSpawnManager trashPileSpawnManager;
 
+    [SerializeField] private GameConfigs gameConfigs;
+
     private void Awake()
     {
         if (Instance == null)
@@ -24,8 +26,12 @@ public class GameManager : MonoBehaviour
 
     private void InitConfigs()
     {
-        kidSpawnManager.InitConfigs(1.0f, 6.0f, 5.0f, 10.0f, 3.0f, 5.0f);
-        trashPileSpawnManager.InitConfigs(5.0f, 10.0f);
+        kidSpawnManager.InitConfigs(gameConfigs.IsKidSpawnActive,
+                    gameConfigs.MinNextSpawnTime, gameConfigs.MaxNextSpawnTime,
+                    gameConfigs.MinMoodTimer, gameConfigs.MaxMoodTimer,
+                    gameConfigs.MinCooldownTimer, gameConfigs.MaxCooldownTimer);
+        trashPileSpawnManager.InitConfigs(gameConfigs.IsTrashPileSpawnActive,
+                    gameConfigs.MinNextSpawnTimeTrashPile, gameConfigs.MaxNextSpawnTimeTrashPile);
     }
 
     private void InitManagers()

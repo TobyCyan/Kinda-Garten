@@ -6,15 +6,19 @@ using UnityEngine.Tilemaps;
 public class TrashPileSpawnManager : MonoBehaviour
 {
     [SerializeField] private GameObject trashPilePrefab;
-    [SerializeField] private float minSpawnInterval = 5f;
-    [SerializeField] private float maxSpawnInterval = 10f;
     [SerializeField] private Tilemap obstacle;
     [SerializeField] private Tilemap walkable;
+    private float minSpawnInterval = 5f;
+    private float maxSpawnInterval = 10f;
+    private bool isActive;
     private readonly List<Vector3Int> walkableCells = new();
     private readonly HashSet<Vector3Int> occupiedCells = new();
 
-    public void InitConfigs(float minInterval, float maxInterval)
+    public void InitConfigs(bool isActive, float minInterval, float maxInterval)
     {
+        this.isActive = isActive;
+        if (!isActive) return;
+
         minSpawnInterval = minInterval;
         maxSpawnInterval = maxInterval;
         InitTileMapInfo();
@@ -34,6 +38,7 @@ public class TrashPileSpawnManager : MonoBehaviour
 
     public void Init()
     {
+        if (!isActive) return;
         StartCoroutine(StartSpawning());
     }
 
