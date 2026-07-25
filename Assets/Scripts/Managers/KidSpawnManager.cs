@@ -1,20 +1,52 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 public class KidSpawnManager : MonoBehaviour
 {
     [SerializeField] private KidController kidController;
+
+    // Configs
+    private float minNextSpawnTime = 1.0f;
+    private float maxNextSpawnTime = 6.0f;
     [SerializeField] private float minMoodTimer;
     [SerializeField] private float maxMoodTimer;
     [SerializeField] private float minCooldownTimer;
     [SerializeField] private float maxCooldownTimer;
+
     private List<Seat> seats = new();
 
     private void Start()
     {
         seats = FindObjectsByType<Seat>().ToList();
+    }
+
+    public void InitConfigs(float minNext, float maxNext,
+                float minMood, float maxMood,
+                float minCooldown, float maxCooldown)
+    {
+        minNextSpawnTime = minNext;
+        maxNextSpawnTime = maxNext;
+        minMoodTimer = minMood;
+        maxMoodTimer = maxMood;
+        minCooldownTimer = minCooldown;
+        maxCooldownTimer = maxCooldown;
+    }
+
+    public void Init()
+    {
+        StartCoroutine(SpawnKidCoroutine());
+    }
+
+    IEnumerator SpawnKidCoroutine()
+    {
+        while (true)
+        {
+            float spawnInterval = Random.Range(minNextSpawnTime, maxNextSpawnTime);
+            yield return new WaitForSeconds(spawnInterval);
+            SpawnKidAtRandomSeat();
+        }
     }
 
     public void SpawnKidAtRandomSeat()

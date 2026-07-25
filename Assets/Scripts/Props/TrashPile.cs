@@ -6,7 +6,6 @@ public class TrashPile : MonoBehaviour, IHoldInteractable
     [SerializeField] private float cleanupTime = 2.5f;
     [SerializeField] private ProgressBar progressBar;
     private float cleanupProgress = 0f;
-    public event Action<float, float> OnHoldProgressUpdated;
     public event Action OnHoldCompleted;
     
     void Start()
