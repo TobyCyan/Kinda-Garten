@@ -11,6 +11,7 @@ public class TrashPileSpawnManager : MonoBehaviour
     [SerializeField] private Tilemap obstacle;
     [SerializeField] private Tilemap walkable;
     private readonly List<Vector3Int> walkableCells = new();
+    private readonly HashSet<Vector3Int> occupiedCells = new();
 
     public void InitConfigs(float minInterval, float maxInterval)
     {
@@ -44,7 +45,13 @@ public class TrashPileSpawnManager : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
             Vector3 spawnPosition = GetSpawnCellPosition();
             SpawnTrashPile(spawnPosition);
+            occupiedCells.Add(walkable.WorldToCell(spawnPosition));
         }
+    }
+
+    public bool IsCellOccupied(Vector3Int cell)
+    {
+        return occupiedCells.Contains(cell);
     }
 
     private Vector3 GetSpawnCellPosition()
@@ -55,6 +62,17 @@ public class TrashPileSpawnManager : MonoBehaviour
     
     private void SpawnTrashPile(Vector3 position)
     {
-        Instantiate(trashPilePrefab, position, Quaternion.identity);
+        GameObject go = Instantiate(trashPilePrefab, position, Quaternion.identity);
+        if (go.TryGetComponent(out TrashPile trashPile))
+        {
+            trashPile.OnHoldCompleted += () => FreeUpOccupiedCell(position);
+            trashPile.Init();
+        }
+    }
+
+    private void FreeUpOccupiedCell(Vector3 pos)
+    {
+        Vector3Int cell = walkable.WorldToCell(pos);
+        occupiedCells.Remove(cell);
     }
 }

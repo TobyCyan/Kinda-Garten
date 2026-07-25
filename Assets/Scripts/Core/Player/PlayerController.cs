@@ -70,6 +70,11 @@ public class PlayerController : MonoBehaviour
             return false;
         }
 
+        if (GameManager.Instance.IsCellOccupied(targetCell))
+        {
+            return false;
+        }
+
         return true;
     }
 
@@ -153,6 +158,7 @@ public class PlayerController : MonoBehaviour
             // TODO: Hide UI prompt for holding interaction
             if (currentHoldInteractable == holdInteractable)
             {
+                HoldCleanUp();
                 currentHoldInteractable.OnHoldCompleted -= HoldCleanUp;
                 currentHoldInteractable = null;
             }

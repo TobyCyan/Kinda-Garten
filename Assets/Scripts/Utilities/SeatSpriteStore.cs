@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Seat;
 
-public class SeatSpriteStore
+public class SeatSpriteStore : SpriteStore
 {
     private const string SPRITE_SHEET_PATH = "Sprites/Environment";
 
@@ -24,27 +24,15 @@ public class SeatSpriteStore
 
     private static readonly Dictionary<string, Sprite> spritesNameMap = new();
 
-    private static void EnsureSpritesLoaded()
-    {
-        if (spritesNameMap.Count > 0) return;
-
-        var sprites = Resources.LoadAll<Sprite>(SPRITE_SHEET_PATH);
-
-        foreach (var sprite in sprites)
-        {
-            spritesNameMap[sprite.name] = sprite;
-        }
-    }
-
     public static Sprite GetTableSprite(SeatColor color)
     {
-        EnsureSpritesLoaded();
+        EnsureSpritesLoaded(spritesNameMap, SPRITE_SHEET_PATH);
         return spritesNameMap[COLOR_TABLE_SPRITE_NAME_MAP[color]];
     }
 
     public static Sprite GetStoolSprite(SeatColor color)
     {
-        EnsureSpritesLoaded();
+        EnsureSpritesLoaded(spritesNameMap, SPRITE_SHEET_PATH);
         return spritesNameMap[COLOR_STOOL_SPRITE_NAME_MAP[color]];
     }
 }
