@@ -687,7 +687,8 @@ MonoBehaviour:
   targetZoneImage: {fileID: 247188493}
   statusText: {fileID: 691882849}
   calmingMusicSource: {fileID: 0}
-  targetZoneDegrees: 80
+  minTargetZoneDegrees: 30
+  maxTargetZoneDegrees: 60
   handSpeedDegreesPerSecond: 150
   feedbackDuration: 0.7
   rotateClockwise: 1
