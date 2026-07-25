@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 20.0f;
-    //[SerializeField] private Transform playerMovePoint;
     [SerializeField] private InputActionReference moveActionReference;
     [SerializeField] private Tilemap floor;
     [SerializeField] private Tilemap seat;
@@ -31,10 +30,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Move(Vector2 direction) {
+    private void Move(Vector3Int gridDirection) {
         if (isMoving) { return; }
 
-        Vector3Int targetCell = floor.WorldToCell(transform.position + (Vector3)direction);
+        Vector3Int currentCell = floor.WorldToCell(transform.position);
+        Vector3Int targetCell = currentCell + gridDirection;
 
         if (CanMove(targetCell)) {
             targetWorldPos = floor.GetCellCenterWorld(targetCell);
@@ -64,10 +64,24 @@ public class PlayerController : MonoBehaviour
         moveActionReference.action.Disable();
     }
 
-    //need change
     private void OnMovePerformed(InputAction.CallbackContext ctx) {
-        if (!isMoving) {
-            Move(ctx.ReadValue<Vector2>());
+        if (isMoving) { return; }
+
+        Vector2 rawInput = ctx.ReadValue<Vector2>();
+
+        int inputX = Mathf.RoundToInt(rawInput.x);
+        int inputY = Mathf.RoundToInt(rawInput.y);
+
+        if (inputX != 0 && inputY != 0) {
+            if (Mathf.Abs(rawInput.x) > Mathf.Abs(rawInput.y)) {
+                inputY = 0;
+            } else {
+                inputX = 0;
+            }
         }
+
+        if (inputX == 0 && inputY == 0) { return; }
+
+        Move(new Vector3Int(inputX, inputY, 0));
     }
 }
