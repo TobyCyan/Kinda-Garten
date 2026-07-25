@@ -6,32 +6,52 @@ using UnityEngine;
 /// </summary>
 public class AlarmManager : MonoBehaviour
 {
+    public static AlarmManager Instance { get; private set; }
     public static float MoodTimerSpeedMultiplier { get; private set; } = 1f;
 
     [SerializeField, Min(1f)] private float alarmSpeedMultiplier = 2f;
+    
+    // Track how many alarms are currently active
+    private int activeAlarmCount = 0;
 
-    public bool IsAlarmActive { get; private set; }
+    public bool IsAlarmActive => activeAlarmCount > 0;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     [ContextMenu("Start Alarm")]
     public void StartAlarm()
     {
-        IsAlarmActive = true;
+        activeAlarmCount++;
         MoodTimerSpeedMultiplier = alarmSpeedMultiplier;
     }
 
     [ContextMenu("Stop Alarm")]
     public void StopAlarm()
     {
-        IsAlarmActive = false;
-        MoodTimerSpeedMultiplier = 1f;
+        activeAlarmCount--;
+        
+        // Only reset the multiplier if all alarms have been turned off
+        if (activeAlarmCount <= 0)
+        {
+            activeAlarmCount = 0;
+            MoodTimerSpeedMultiplier = 1f;
+        }
     }
 
     private void OnDisable()
     {
-        if (IsAlarmActive)
-        {
-            StopAlarm();
-        }
+        activeAlarmCount = 0;
+        MoodTimerSpeedMultiplier = 1f;
     }
 
     private void OnValidate()
