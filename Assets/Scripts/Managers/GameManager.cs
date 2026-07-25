@@ -4,11 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     [SerializeField] private KidSpawnManager kidSpawnManager;
-
-    private float kidSpawnTimer = 0.0f;
-    private float nextKidSpawnTime;
-    const float MIN_NEXT_KID_SPAWN_TIME = 1.0f;
-    const float MAX_NEXT_KID_SPAWN_TIME = 6.0f;
+    [SerializeField] private TrashPileSpawnManager trashPileSpawnManager;
 
     private void Awake()
     {
@@ -21,27 +17,25 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        kidSpawnTimer = 0.0f;
+
+        InitConfigs();
+        InitManagers();
     }
 
-    private void Update()
+    private void InitConfigs()
     {
-        GameLoop();
+        kidSpawnManager.InitConfigs(1.0f, 6.0f, 5.0f, 10.0f, 3.0f, 5.0f);
+        trashPileSpawnManager.InitConfigs(5.0f, 10.0f);
     }
 
-    private void GameLoop()
+    private void InitManagers()
     {
-        LoopKidSpawn();
+        kidSpawnManager.Init();
+        trashPileSpawnManager.Init();
     }
 
-    private void LoopKidSpawn()
+    public bool IsCellOccupied(Vector3Int cell)
     {
-        kidSpawnTimer += Time.deltaTime;
-        if (kidSpawnTimer >= nextKidSpawnTime)
-        {
-            kidSpawnManager.SpawnKidAtRandomSeat();
-            kidSpawnTimer = 0.0f;
-            nextKidSpawnTime = Random.Range(MIN_NEXT_KID_SPAWN_TIME, MAX_NEXT_KID_SPAWN_TIME);
-        }
+        return trashPileSpawnManager.IsCellOccupied(cell);
     }
 }

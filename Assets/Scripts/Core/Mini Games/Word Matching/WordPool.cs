@@ -22,11 +22,16 @@ public class WordPool
         new("book", "A type of reading material."),
         new("flower", "Smells nice, looks pretty, attracts butterflies."),
         new("star", "What's on top of a Christmas tree?"),
-        new("grape", "A red round-shaped fruit."),
+        new("music", "What do you listen to?"),
         new("table", "A furniture to place things on top of."),
         new("pencil", "I use this to write notes."),
         new("lemon", "Extremely sour!"),
-        new("calendar", "How to tell the date?")
+        new("calendar", "How to tell the date?"),
+        new("cloud", "What's floating in the sky?"),
+        new("guitar", "A musical instrument with strings."),
+        new("planet", "Earth is a..."),
+        new("ocean", "A large body of water."),
+        new("rainbow", "What a colourful sight after the rain!"),
     };
 
     public static WordData GetRandomWord()
