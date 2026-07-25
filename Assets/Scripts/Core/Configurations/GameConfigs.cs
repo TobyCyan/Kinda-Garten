@@ -7,10 +7,10 @@ public class GameConfigs : ScriptableObject
     public bool IsKidSpawnActive;
     public float MinNextSpawnTime = 1.0f;
     public float MaxNextSpawnTime = 6.0f;
-    public float MinMoodTimer;
-    public float MaxMoodTimer;
-    public float MinCooldownTimer;
-    public float MaxCooldownTimer;
+    public float MinMoodTimer = 5.0f;
+    public float MaxMoodTimer = 10.0f;
+    public float MinCooldownTimer = 3.0f;
+    public float MaxCooldownTimer = 5.0f;
 
     [Header("Trash Pile Spawn Manager Configs")]
     public bool IsTrashPileSpawnActive;
