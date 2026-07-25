@@ -1,9 +1,8 @@
-using System.Collections.Generic;
 using System;
 using UnityEngine;
 using static UnityEngine.Random;
 
-public class Seat : MonoBehaviour
+public class Seat : MiniGameTrigger
 {
     [SerializeField] private SpriteRenderer stoolRenderer;
     [SerializeField] private SpriteRenderer tableRenderer;
@@ -11,6 +10,11 @@ public class Seat : MonoBehaviour
     public Transform SeatTransform => seatTransform;
     public SeatColor Color { get; private set; }
     public bool IsOccupied { get; set; }
+
+    public void TriggerMiniGame()
+    {
+        TriggerMiniGame(Color);
+    }
 
     private void Awake()
     {

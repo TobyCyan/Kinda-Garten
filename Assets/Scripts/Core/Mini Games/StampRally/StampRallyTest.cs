@@ -7,7 +7,7 @@ using UnityEngine.UI;
 /// </summary>
 public class StampRallyTest : MonoBehaviour
 {
-    [SerializeField] private StampRallyMiniGame stampRally;
+    [SerializeField] private StampRallyGameMaster stampRally;
     [SerializeField] private Button startButton;
 
     private void Awake()
