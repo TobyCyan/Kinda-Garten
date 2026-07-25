@@ -10,6 +10,7 @@ public class Seat : MiniGameTrigger
     public Transform SeatTransform => seatTransform;
     public SeatColor Color { get; private set; }
     public bool IsOccupied { get; set; }
+    public bool IsAlarmOccupied { get; set; } = false;
 
     public void TriggerMiniGame()
     {
