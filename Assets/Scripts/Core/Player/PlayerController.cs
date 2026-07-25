@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetWorldPos;
     private bool isMoving = false;
 
-    [SerializeField] private ProgressBar progressBar;
     private bool isHolding = false;
     private IHoldInteractable currentHoldInteractable;
     
@@ -25,10 +24,6 @@ public class PlayerController : MonoBehaviour
         Vector3Int currentCell = floor.WorldToCell(transform.position);
         targetWorldPos = floor.GetCellCenterWorld(currentCell);
         transform.position = targetWorldPos;
-        if (progressBar != null)
-        {
-            progressBar.HideBar();
-        }
     }
 
     private void Update()
@@ -126,28 +121,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnHoldPerformed(InputAction.CallbackContext ctx)
     {
-        if (currentHoldInteractable != null)
-        {
-            isHolding = true;
-            progressBar.ShowBar();
-        }
+        isHolding = true;
+        currentHoldInteractable?.DoOnHold();
     }
 
     private void OnHoldCanceled(InputAction.CallbackContext ctx)
     {
-        isHolding = false;
-        progressBar.HideBar();
-        currentHoldInteractable?.DoOnRelease();
+        HoldCleanUp();
     }
 
     private void HoldCleanUp()
     {
-        if (currentHoldInteractable != null)
-        {
-            isHolding = false;
-            progressBar.HideBar();
-            currentHoldInteractable.DoOnRelease();
-        }
+        isHolding = false;
+        currentHoldInteractable?.DoOnRelease();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -156,7 +142,6 @@ public class PlayerController : MonoBehaviour
         {
             // TODO: Show UI prompt for holding interaction (e.g., "Hold E to interact")
             currentHoldInteractable = holdInteractable;
-            currentHoldInteractable.OnHoldProgressUpdated += progressBar.UpdateFill;
             currentHoldInteractable.OnHoldCompleted += HoldCleanUp;
         }
     }
@@ -168,7 +153,6 @@ public class PlayerController : MonoBehaviour
             // TODO: Hide UI prompt for holding interaction
             if (currentHoldInteractable == holdInteractable)
             {
-                currentHoldInteractable.OnHoldProgressUpdated -= progressBar.UpdateFill;
                 currentHoldInteractable.OnHoldCompleted -= HoldCleanUp;
                 currentHoldInteractable = null;
             }

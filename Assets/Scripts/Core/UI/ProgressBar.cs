@@ -11,6 +11,11 @@ public class ProgressBar : MonoBehaviour
         slider.value = Mathf.Clamp01(newFillAmount);
     }
 
+    public void ResetFill()
+    {
+        slider.value = 0f;
+    }
+
     public void ShowBar()
     {
         slider.gameObject.SetActive(true);
