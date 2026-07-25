@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,12 +8,27 @@ public class TrashPileSpawnManager : MonoBehaviour
     [SerializeField] private GameObject trashPilePrefab;
     [SerializeField] private float minSpawnInterval = 5f;
     [SerializeField] private float maxSpawnInterval = 10f;
-    [SerializeField] private Tilemap floor;
+    [SerializeField] private Tilemap obstacle;
+    [SerializeField] private Tilemap walkable;
+    private readonly List<Vector3Int> walkableCells = new();
 
     public void InitConfigs(float minInterval, float maxInterval)
     {
         minSpawnInterval = minInterval;
         maxSpawnInterval = maxInterval;
+        InitTileMapInfo();
+    }
+
+    private void InitTileMapInfo()
+    {
+        walkableCells.Clear();
+        foreach (var pos in walkable.cellBounds.allPositionsWithin)
+        {
+            if (walkable.HasTile(pos) & !obstacle.HasTile(pos))
+            {
+                walkableCells.Add(pos);
+            }
+        }
     }
 
     public void Init()
@@ -33,10 +49,8 @@ public class TrashPileSpawnManager : MonoBehaviour
 
     private Vector3 GetSpawnCellPosition()
     {
-        Vector3Int randomCell = new(Random.Range(floor.cellBounds.xMin, floor.cellBounds.xMax),
-                                               Random.Range(floor.cellBounds.yMin, floor.cellBounds.yMax),
-                                               0);
-        return floor.GetCellCenterWorld(randomCell);
+        int randomIndex = Random.Range(0, walkableCells.Count);
+        return walkable.GetCellCenterWorld(walkableCells[randomIndex]);
     }
     
     private void SpawnTrashPile(Vector3 position)
