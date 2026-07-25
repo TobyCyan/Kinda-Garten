@@ -279,6 +279,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7688080550649500470}
     m_Modifications:
     - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
+      propertyPath: m_text
+      value: Definition Definition Definition Definition
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_fontSize
       value: 30
       objectReference: {fileID: 0}
@@ -381,6 +385,18 @@ PrefabInstance:
     - target: {fileID: 3162665039684539247, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 520
       objectReference: {fileID: 0}
     - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_AnchoredPosition.y
