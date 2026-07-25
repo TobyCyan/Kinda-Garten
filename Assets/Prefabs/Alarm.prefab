@@ -109,6 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Alarm
   turnOffTime: 2.5
   progressBar: {fileID: 2634595780778212372}
+  spriteRenderer: {fileID: 1822570084780976899}
 --- !u!61 &2029092117651558526
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,20 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-/// <summary>
-/// Controls the global alarm effect for every kid's visible mood countdown.
-/// Existing and newly spawned kids read the same multiplier.
-/// </summary>
 public class AlarmManager : MonoBehaviour
 {
     public static AlarmManager Instance { get; private set; }
     public static float MoodTimerSpeedMultiplier { get; private set; } = 1f;
 
+    [Header("Penalty Settings")]
     [SerializeField, Min(1f)] private float alarmSpeedMultiplier = 2f;
     
-    // Track how many alarms are currently active
-    private int activeAlarmCount = 0;
+    [Header("Wave Settings")]
+    [SerializeField] private float minWaveInterval = 10.0f;
+    [SerializeField] private float maxWaveInterval = 25.0f;
+    [SerializeField] private int minAlarmsPerWave = 1;
+    [SerializeField] private int maxAlarmsPerWave = 2;
 
+    private int activeAlarmCount = 0;
     public bool IsAlarmActive => activeAlarmCount > 0;
+
+    private List<Alarm> allAlarms = new List<Alarm>();
+    private Coroutine ringCoroutine;
 
     private void Awake()
     {
@@ -28,19 +35,53 @@ public class AlarmManager : MonoBehaviour
         }
     }
 
-    [ContextMenu("Start Alarm")]
-    public void StartAlarm()
+    public void RegisterAlarm(Alarm alarm)
+    {
+        allAlarms.Add(alarm);
+        
+        if (ringCoroutine == null)
+        {
+            ringCoroutine = StartCoroutine(RingAlarmWavesRoutine());
+        }
+    }
+
+    private IEnumerator RingAlarmWavesRoutine()
+    {
+        while (true)
+        {
+            float waitTime = Random.Range(minWaveInterval, maxWaveInterval);
+            yield return new WaitForSeconds(waitTime);
+
+            List<Alarm> quietAlarms = allAlarms.Where(a => !a.IsRinging).ToList();
+
+            int targetWaveSize = Random.Range(minAlarmsPerWave, maxAlarmsPerWave + 1);
+            int actualWaveSize = Mathf.Min(targetWaveSize, quietAlarms.Count);
+
+            for (int i = 0; i < actualWaveSize; i++)
+            {
+                int randomIndex = Random.Range(0, quietAlarms.Count);
+                
+                // 1. Tell the alarm to start ringing locally
+                quietAlarms[randomIndex].TriggerRing();
+                
+                // 2. Update the manager's global state directly
+                StartAlarm();
+                
+                quietAlarms.RemoveAt(randomIndex);
+            }
+        }
+    }
+
+    private void StartAlarm()
     {
         activeAlarmCount++;
         MoodTimerSpeedMultiplier = alarmSpeedMultiplier;
     }
 
-    [ContextMenu("Stop Alarm")]
     public void StopAlarm()
     {
         activeAlarmCount--;
         
-        // Only reset the multiplier if all alarms have been turned off
         if (activeAlarmCount <= 0)
         {
             activeAlarmCount = 0;
@@ -57,6 +98,8 @@ public class AlarmManager : MonoBehaviour
     private void OnValidate()
     {
         alarmSpeedMultiplier = Mathf.Max(1f, alarmSpeedMultiplier);
+        minAlarmsPerWave = Mathf.Max(1, minAlarmsPerWave);
+        maxAlarmsPerWave = Mathf.Max(minAlarmsPerWave, maxAlarmsPerWave);
     }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]

@@ -32,8 +32,8 @@ public class CalmingMusicMiniGame : MonoBehaviour, IMiniGameMaster
     [SerializeField] private AudioSource calmingMusicSource;
 
     [Header("Timing")]
-    [FormerlySerializedAs("greenZoneDegrees")]
-    [SerializeField, Range(10f, 180f)] private float targetZoneDegrees = 80f;
+    [SerializeField, Range(10f, 180f)] private float minTargetZoneDegrees = 30f;
+    [SerializeField, Range(10f, 180f)] private float maxTargetZoneDegrees = 60f;
     [SerializeField, Min(1f)] private float handSpeedDegreesPerSecond = 150f;
     [SerializeField, Min(0f)] private float feedbackDuration = 0.7f;
     [SerializeField] private bool rotateClockwise = true;
@@ -47,6 +47,9 @@ public class CalmingMusicMiniGame : MonoBehaviour, IMiniGameMaster
     private float handAngle;
     private float targetCentreAngle;
     private float inputEnabledAt;
+    
+    // Store the randomly chosen size for the current attempt
+    private float currentTargetZoneDegrees;
 
     private void Awake()
     {
@@ -158,10 +161,12 @@ public class CalmingMusicMiniGame : MonoBehaviour, IMiniGameMaster
 
     private void MoveTargetZone()
     {
+        // Pick a random size for the target zone between your specified minimum and maximum
+        currentTargetZoneDegrees = UnityEngine.Random.Range(minTargetZoneDegrees, maxTargetZoneDegrees);
         targetCentreAngle = UnityEngine.Random.Range(0f, 360f);
 
-        float startAngle = targetCentreAngle - targetZoneDegrees * 0.5f;
-        targetZoneImage.fillAmount = targetZoneDegrees / 360f;
+        float startAngle = targetCentreAngle - currentTargetZoneDegrees * 0.5f;
+        targetZoneImage.fillAmount = currentTargetZoneDegrees / 360f;
         targetZoneImage.rectTransform.localEulerAngles = new Vector3(0f, 0f, -startAngle);
     }
 
@@ -180,7 +185,7 @@ public class CalmingMusicMiniGame : MonoBehaviour, IMiniGameMaster
     private bool IsInsideTarget(float angle)
     {
         float distance = Mathf.Abs(Mathf.DeltaAngle(angle, targetCentreAngle));
-        return distance <= targetZoneDegrees * 0.5f;
+        return distance <= currentTargetZoneDegrees * 0.5f;
     }
 
     private void ApplyHandAngle()
@@ -296,9 +301,9 @@ public class CalmingMusicMiniGame : MonoBehaviour, IMiniGameMaster
 
     private void OnValidate()
     {
-        targetZoneDegrees = Mathf.Clamp(targetZoneDegrees, 10f, 180f);
+        minTargetZoneDegrees = Mathf.Clamp(minTargetZoneDegrees, 10f, 180f);
+        maxTargetZoneDegrees = Mathf.Clamp(maxTargetZoneDegrees, minTargetZoneDegrees, 180f);
         handSpeedDegreesPerSecond = Mathf.Max(1f, handSpeedDegreesPerSecond);
-        feedbackDuration = Mathf.Max(0f, feedbackDuration);
         ConfigureImages();
 
         if (miniGameRoot == gameObject)
