@@ -12,7 +12,6 @@ public class AlarmSpawner : MonoBehaviour
 
     private void Start()
     {
-        // FIX: Replaced obsolete FindObjectsSortMode with FindObjectsInactive
         List<Seat> availableSeats = FindObjectsByType<Seat>(FindObjectsInactive.Exclude).ToList();
 
         if (availableSeats.Count == 0) 
