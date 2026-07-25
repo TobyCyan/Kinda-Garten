@@ -9,13 +9,15 @@ public class ImageFadeWidget : MonoBehaviour
     [SerializeField] private float fadeOutDuration;
     [SerializeField] private float fadeInDuration;
 
-    public Task FadeIn()
+    public async Task FadeIn()
     {
-        return panel.DOFade(1.0f, fadeInDuration).AsyncWaitForCompletion();
+        panel.raycastTarget = true;
+        await panel.DOFade(1.0f, fadeInDuration).AsyncWaitForCompletion();
     }
 
-    public Task FadeOut()
+    public async Task FadeOut()
     {
-        return panel.DOFade(0.0f, fadeOutDuration).AsyncWaitForCompletion();
+        await panel.DOFade(0.0f, fadeOutDuration).AsyncWaitForCompletion();
+        panel.raycastTarget = false;
     }
 }

@@ -4,8 +4,10 @@ using UnityEngine.SceneManagement;
 
 public static class SceneTransitionManager
 {
+    private static int currentBuildIndex = 0;
     public static async void LoadHome()
     {
+        currentBuildIndex = 0;
         await LoadSceneAsync(0);
     }
 
@@ -14,14 +16,10 @@ public static class SceneTransitionManager
         await LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public static async void LoadGameScene()
+    public static async void LoadNextScene()
     {
-        await LoadSceneAsync(1);
-    }
-
-    public static async void LoadGameScene(int sceneIndex)
-    {
-        await LoadSceneAsync(sceneIndex);
+        currentBuildIndex++;
+        await LoadSceneAsync(currentBuildIndex);
     }
 
     private static async Task LoadSceneAsync(int sceneIndex)

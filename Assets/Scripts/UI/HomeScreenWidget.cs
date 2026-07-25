@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HomeSceneManager : MonoBehaviour
+public class HomeSceneWidget : MonoBehaviour
 {
     [SerializeField] private Button playButton;
     [SerializeField] private ImageFadeWidget fadeWidget;
@@ -22,6 +22,6 @@ public class HomeSceneManager : MonoBehaviour
 
         await fadeWidget.FadeIn();
 
-        SceneTransitionManager.LoadGameScene();
+        SceneTransitionManager.LoadNextScene();
     }
 }
