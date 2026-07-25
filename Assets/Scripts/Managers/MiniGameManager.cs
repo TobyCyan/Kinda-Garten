@@ -37,6 +37,12 @@ public class MiniGameManager : MonoBehaviour
 
     public void GenerateMiniGame(SeatColor seatColor)
     {
+        if (currentGameMaster != null)
+        {
+            Debug.LogWarning("A mini-game is already in progress. Stop the current one first.");
+            return;
+        }
+
         var gameMaster = gameMasters[Random.Range(0, gameMasters.Count)];
         if (gameMaster == null)
         {
@@ -47,10 +53,10 @@ public class MiniGameManager : MonoBehaviour
 
         currentGameMaster = gameMaster;
         gameMaster.GenerateMiniGame();
-        gameMaster.OnMiniGameCompleted += OnMiniGameCompleted;
+        gameMaster.OnMiniGameCompleted += StopMiniGame;
     }
 
-    private void OnMiniGameCompleted()
+    public void StopMiniGame()
     {
         if (currentGameMaster == null)
         {
@@ -58,7 +64,7 @@ public class MiniGameManager : MonoBehaviour
         }
 
         currentGameMaster.CleanUpMiniGame();
-        currentGameMaster.OnMiniGameCompleted -= OnMiniGameCompleted;
+        currentGameMaster.OnMiniGameCompleted -= StopMiniGame;
         currentGameMaster = null;
 
         miniGameView.HideView();

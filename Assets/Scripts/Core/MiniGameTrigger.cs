@@ -3,7 +3,7 @@ using static Seat;
 
 public class MiniGameTrigger : MonoBehaviour
 {
-    protected void TriggerMiniGame(SeatColor seatColor)
+    public void TriggerMiniGame(SeatColor seatColor)
     {
         if (MiniGameManager.Instance == null)
         {
