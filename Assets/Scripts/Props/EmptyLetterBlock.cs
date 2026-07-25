@@ -22,7 +22,7 @@ public class EmptyLetterBlock : LetterBlock, IDropHandler
             if (IsCorrectLetter(droppedLetter))
             {
                 Destroy(droppedLetterBlock.gameObject);
-                letterText.text = supposedLetter.ToString().ToUpper();
+                base.Init(droppedLetter);
                 OnCorrectLetterDropped?.Invoke();
             }
         }
