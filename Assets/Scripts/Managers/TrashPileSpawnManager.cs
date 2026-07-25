@@ -66,6 +66,7 @@ public class TrashPileSpawnManager : MonoBehaviour
         if (go.TryGetComponent(out TrashPile trashPile))
         {
             trashPile.OnHoldCompleted += () => FreeUpOccupiedCell(position);
+            trashPile.Init();
         }
     }
 
