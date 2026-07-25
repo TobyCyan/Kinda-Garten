@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: World Space UI
+    uniqueID: 4045343537
+    locked: 0
   - name: Mini Game
     uniqueID: 2611333261
     locked: 0
