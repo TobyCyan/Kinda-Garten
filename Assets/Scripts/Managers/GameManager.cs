@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
     [SerializeField] private KidSpawnManager kidSpawnManager;
 
     private float kidSpawnTimer = 0.0f;
@@ -11,6 +12,15 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         kidSpawnTimer = 0.0f;
     }
 
@@ -32,14 +42,6 @@ public class GameManager : MonoBehaviour
             kidSpawnManager.SpawnKidAtRandomSeat();
             kidSpawnTimer = 0.0f;
             nextKidSpawnTime = Random.Range(MIN_NEXT_KID_SPAWN_TIME, MAX_NEXT_KID_SPAWN_TIME);
-        }
-    }
-
-    private void OnValidate()
-    {
-        if (kidSpawnManager == null)
-        {
-            Debug.LogWarning("KidSpawnManager reference is not set in the GameManager.");
         }
     }
 }
