@@ -336,6 +336,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2784468231703952999, guid: 7616eafc45c694f4fa6a829e8099d8c9, type: 3}
+      propertyPath: gameConfigs
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c51fa5841ef9f342823bb80538ab619, type: 2}
+    - target: {fileID: 2784468231703952999, guid: 7616eafc45c694f4fa6a829e8099d8c9, type: 3}
       propertyPath: kidSpawnManager
       value: 
       objectReference: {fileID: 130356983}
@@ -4485,6 +4489,10 @@ PrefabInstance:
       propertyPath: kidController
       value: 
       objectReference: {fileID: 4651694108436705377, guid: f77235ccf718de34097ab8e5f24bd4a0, type: 3}
+    - target: {fileID: 3243053083987996304, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
+      propertyPath: _spriteYOffset
+      value: -0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 3243053083987996304, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
       propertyPath: maxCooldownTimer
       value: 5

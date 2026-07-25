@@ -10,10 +10,11 @@ public class KidSpawnManager : MonoBehaviour
     // Configs
     private float minNextSpawnTime = 1.0f;
     private float maxNextSpawnTime = 6.0f;
-    [SerializeField] private float minMoodTimer;
-    [SerializeField] private float maxMoodTimer;
-    [SerializeField] private float minCooldownTimer;
-    [SerializeField] private float maxCooldownTimer;
+    private float minMoodTimer;
+    private float maxMoodTimer;
+    private float minCooldownTimer;
+    private float maxCooldownTimer;
+    private bool isActive;
 
     private List<Seat> seats = new();
 
@@ -24,10 +25,13 @@ public class KidSpawnManager : MonoBehaviour
         seats = FindObjectsByType<Seat>().ToList();
     }
 
-    public void InitConfigs(float minNext, float maxNext,
+    public void InitConfigs(bool isActive, float minNext, float maxNext,
                 float minMood, float maxMood,
                 float minCooldown, float maxCooldown)
     {
+        this.isActive = isActive;
+        if (!isActive) return;
+
         minNextSpawnTime = minNext;
         maxNextSpawnTime = maxNext;
         minMoodTimer = minMood;
@@ -38,10 +42,11 @@ public class KidSpawnManager : MonoBehaviour
 
     public void Init()
     {
+        if (!isActive) return;
         StartCoroutine(SpawnKidCoroutine());
     }
 
-    IEnumerator SpawnKidCoroutine()
+    private IEnumerator SpawnKidCoroutine()
     {
         while (true)
         {
@@ -51,7 +56,7 @@ public class KidSpawnManager : MonoBehaviour
         }
     }
 
-    public void SpawnKidAtRandomSeat()
+    private void SpawnKidAtRandomSeat()
     {
         Seat randomSeat = GetRandomUnoccupiedSeat();
         if (randomSeat != null)

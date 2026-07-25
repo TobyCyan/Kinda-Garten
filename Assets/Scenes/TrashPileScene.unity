@@ -185,6 +185,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2784468231703952999, guid: 7616eafc45c694f4fa6a829e8099d8c9, type: 3}
+      propertyPath: gameConfigs
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c51fa5841ef9f342823bb80538ab619, type: 2}
+    - target: {fileID: 2784468231703952999, guid: 7616eafc45c694f4fa6a829e8099d8c9, type: 3}
       propertyPath: trashPileSpawnManager
       value: 
       objectReference: {fileID: 781100736}
@@ -336,8 +340,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashPileSpawnManager
   trashPilePrefab: {fileID: 8937104622631837648, guid: 605d7d661fbc0fe41b53022448d97217, type: 3}
-  minSpawnInterval: 5
-  maxSpawnInterval: 10
   obstacle: {fileID: 1077472581}
   walkable: {fileID: 1614867957}
 --- !u!4 &781100737
