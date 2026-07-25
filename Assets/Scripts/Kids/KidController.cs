@@ -32,7 +32,7 @@ public class KidController : MonoBehaviour
         }
         else
         {
-            _currentMoodTimer -= Time.deltaTime;
+            _currentMoodTimer -= Time.deltaTime * AlarmManager.MoodTimerSpeedMultiplier;
             moodTimer.RefreshUI(_currentMoodTimer);
 
             if (_currentMoodTimer > 0) return;
