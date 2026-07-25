@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 20.0f;
     [SerializeField] private InputActionReference moveActionReference;
     [SerializeField] private InputActionReference holdActionReference;
-    [SerializeField] private Tilemap floor;
-    [SerializeField] private Tilemap seat;
+    [SerializeField] private Tilemap walkable;
+    [SerializeField] private Tilemap obstacle;
 
     private Vector3 targetWorldPos;
     private bool isMoving = false;
@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        Vector3Int currentCell = floor.WorldToCell(transform.position);
-        targetWorldPos = floor.GetCellCenterWorld(currentCell);
+        Vector3Int currentCell = walkable.WorldToCell(transform.position);
+        targetWorldPos = walkable.GetCellCenterWorld(currentCell);
         transform.position = targetWorldPos;
     }
 
@@ -48,24 +48,24 @@ public class PlayerController : MonoBehaviour
     {
         if (isMoving) { return; }
 
-        Vector3Int currentCell = floor.WorldToCell(transform.position);
+        Vector3Int currentCell = walkable.WorldToCell(transform.position);
         Vector3Int targetCell = currentCell + gridDirection;
 
         if (CanMove(targetCell))
         {
-            targetWorldPos = floor.GetCellCenterWorld(targetCell);
+            targetWorldPos = walkable.GetCellCenterWorld(targetCell);
             isMoving = true;
         }
     }
 
     private bool CanMove(Vector3Int targetCell)
     {
-        if (seat != null && seat.HasTile(targetCell))
+        if (obstacle != null && obstacle.HasTile(targetCell))
         {
             return false;
         }
 
-        if (floor != null && !floor.HasTile(targetCell))
+        if (walkable != null && !walkable.HasTile(targetCell))
         {
             return false;
         }
