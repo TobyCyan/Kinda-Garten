@@ -22,7 +22,17 @@ public class MiniGameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Init();
+    }
+
+    private void Init()
+    {
         gameMasters = new List<IMiniGameMaster>(FindObjectsByType<MonoBehaviour>().OfType<IMiniGameMaster>());
+        miniGameView.HideView();
+        foreach (var gameMaster in gameMasters)
+        {
+            gameMaster.CleanUpMiniGame();
+        }
     }
 
     public void GenerateMiniGame(SeatColor seatColor)

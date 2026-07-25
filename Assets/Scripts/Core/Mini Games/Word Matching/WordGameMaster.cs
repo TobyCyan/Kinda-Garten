@@ -24,7 +24,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
 
     private PuzzleData currentPuzzleData;
 
-    public readonly struct PuzzleData
+    public class PuzzleData
     {
         public string Word { get; }
         public List<SelectableLetterBlock> SelectableLetterBlocks { get; }
@@ -64,7 +64,10 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
     public void CleanUpMiniGame()
     {
         definitionText.enabled = false;
-        foreach(var lb in currentPuzzleData.DisplayedLetterBlocks)
+        if (currentPuzzleData == null)
+            return;
+
+        foreach (var lb in currentPuzzleData.DisplayedLetterBlocks)
         {
             if (lb != null)
                 Destroy(lb.gameObject);
