@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4497143358765676632}
   - component: {fileID: 1665429525402224014}
-  - component: {fileID: 3074095706784732309}
   - component: {fileID: 2490764819846816724}
   m_Layer: 0
   m_Name: Letter
@@ -87,14 +86,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!222 &3074095706784732309
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840773671948580670}
-  m_CullTransparentMesh: 1
 --- !u!114 &2490764819846816724
 MonoBehaviour:
   m_ObjectHideFlags: 0
