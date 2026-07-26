@@ -34,6 +34,7 @@ public abstract class ScreenWidget : MonoBehaviour
 
     private void ButtonClick()
     {
+        SfxManager.Instance.Play(SfxId.ButtonClick);
         OnButtonClick();
     }
 
