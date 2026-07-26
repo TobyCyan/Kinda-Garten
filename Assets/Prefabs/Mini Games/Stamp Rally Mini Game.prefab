@@ -195,7 +195,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4933492686356289590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6005488123408251231}
+        m_TargetAssemblyTypeName: StampRallyGameMaster, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1700439084288960031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,7 +1314,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1353078901041668296}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6005488123408251231}
+        m_TargetAssemblyTypeName: StampRallyGameMaster, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4808265462171229658
 GameObject:
   m_ObjectHideFlags: 0
@@ -1498,7 +1522,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1700679253541705626}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6005488123408251231}
+        m_TargetAssemblyTypeName: StampRallyGameMaster, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5235159659984920466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,7 +2332,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5956868988016902186}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6005488123408251231}
+        m_TargetAssemblyTypeName: StampRallyGameMaster, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9159885364796537195
 GameObject:
   m_ObjectHideFlags: 0

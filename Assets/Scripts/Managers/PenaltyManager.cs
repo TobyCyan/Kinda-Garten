@@ -51,6 +51,7 @@ public class PenaltyManager : MonoBehaviour
             return;
         }
 
+        SfxManager.Instance.Play(SfxId.Penalty);
         PenaltyCount++;
         RefreshPenaltyDisplay();
         OnPenaltyCountChanged?.Invoke(PenaltyCount);
@@ -89,6 +90,7 @@ public class PenaltyManager : MonoBehaviour
     {
         Debug.Log("FailGame");
         HasGameFailed = true;
+        SfxManager.Instance.Play(SfxId.GameOver);
         OnGameFailed?.Invoke();
     }
 }

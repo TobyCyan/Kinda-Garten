@@ -93,6 +93,7 @@ public class KidController : MonoBehaviour
     public void CrashoutAndRemove()
     {
         Debug.Log("Crashout");
+        SfxManager.Instance.Play(SfxId.KidCrashOut);
         moodTimer.CleanUp();
 
         //Trigger Animation
