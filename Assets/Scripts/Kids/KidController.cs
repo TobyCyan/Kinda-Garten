@@ -78,4 +78,14 @@ public class KidController : MonoBehaviour
         _isInCooldown = true;
         moodTimer.SetVisiblity(false);
     }
+
+    public MoodTimer GetMoodTimer()
+    {
+        return moodTimer;
+    }
+
+    public bool IsInCooldown()
+    {
+        return _isInCooldown;
+    }
 }

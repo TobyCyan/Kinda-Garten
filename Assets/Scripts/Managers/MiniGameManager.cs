@@ -26,7 +26,7 @@ public class MiniGameManager : MonoBehaviour
         }
     }
 
-    public void GenerateMiniGame(SeatColor seatColor)
+    public void GenerateMiniGame(MiniGameContext context)
     {
         if (currentGameMaster != null)
         {
@@ -41,7 +41,7 @@ public class MiniGameManager : MonoBehaviour
         }
 
         GameManager.Instance.SetPlayerActiveStatus(false);
-        miniGameView.ShowView(seatColor);
+        miniGameView.ShowView(context);
 
         currentGameMaster = gameMaster;
         gameMaster.GenerateMiniGame();
