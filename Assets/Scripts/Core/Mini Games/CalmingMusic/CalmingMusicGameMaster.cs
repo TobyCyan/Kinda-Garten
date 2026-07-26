@@ -118,6 +118,7 @@ public class CalmingMusicGameMaster : MonoBehaviour, IMiniGameMaster
         else
         {
             SetStatus("Missed! Try again.");
+            SfxManager.Instance.Play(SfxId.MiniGameFailAttempt);
             StartCoroutine(RetryAfterFeedback());
         }
     }

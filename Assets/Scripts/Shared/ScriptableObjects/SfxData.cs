@@ -10,10 +10,12 @@ public class SfxData : ScriptableObject
 public enum SfxId
 {
     ButtonClick,
-    CrashOut,
+    KidCrashOut,
     MiniGameSuccess,
-    MiniGameFail,
+    MiniGameFailAttempt,
     Penalty,
     LevelSuccess,
     GameOver,
+    CorrectMove,
+    WrongMove,
 }

@@ -161,6 +161,7 @@ public class StampRallyGameMaster : MonoBehaviour, IMiniGameMaster
         acceptingInput = false;
         ShowChosenStamp(currentStep, stampIndex);
         SetStatus("Wrong attempt!");
+        SfxManager.Instance.Play(SfxId.MiniGameFailAttempt);
 
         yield return new WaitForSeconds(wrongAttemptMessageDuration);
 
