@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b4c6ac8f3b98943989c2f6d7f6141b, type: 3}
   m_Name: GameConfigs_Lvl2
   m_EditorClassIdentifier: Assembly-CSharp::GameConfigs
-  IsKidSpawnActive: 0
+  IsKidSpawnActive: 1
   MinNextSpawnTime: 1
   MaxNextSpawnTime: 6
   MinMoodTimer: 5

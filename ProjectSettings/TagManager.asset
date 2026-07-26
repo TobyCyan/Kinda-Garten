@@ -41,6 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Classroom
+    uniqueID: 229416035
+    locked: 0
+  - name: GameObjects
+    uniqueID: 1515563023
+    locked: 0
+  - name: GameObjectsUI
+    uniqueID: 911093655
+    locked: 0
   - name: World Space UI
     uniqueID: 4045343537
     locked: 0

@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class KidController : MonoBehaviour
 {
     [SerializeField] private MoodTimer moodTimer;
+    [SerializeField] private List<Sprite> kidVariations;
 
     private float _baseMoodDuration;
     private float _baseCooldownDuration;
@@ -17,6 +19,16 @@ public class KidController : MonoBehaviour
 
     private bool _isInCooldown = false;
     private bool _isFirstInit = false;
+
+    private void Start() 
+    {
+        SpriteRenderer kidSprite = GetComponentInChildren<SpriteRenderer>();
+        if (kidVariations != null && kidVariations.Count > 0 && kidSprite != null)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, kidVariations.Count);
+            kidSprite.sprite = kidVariations[randomIndex];
+        }
+    }
 
     private void Update()
     {
@@ -61,7 +73,7 @@ public class KidController : MonoBehaviour
         }
     }
 
-    private void TriggerCooldown()
+    public void TriggerCooldown()
     {
         _isInCooldown = true;
         moodTimer.SetVisiblity(false);
