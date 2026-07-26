@@ -10,13 +10,12 @@ public class Seat : MiniGameTrigger
     public Transform SeatTransform => seatTransform;
     public KidController Kid;
     public SeatColor Color { get; private set; }
-    public bool IsOccupied { get; set; }
     public bool IsAlarmOccupied { get; set; } = false;
     public bool IsInteractable { get; set; }
 
     public void TriggerMiniGame()
     {
-        if (IsInteractable && IsOccupied) 
+        if (IsInteractable && IsOccupied() && !Kid.IsInCooldown()) 
         {
             TriggerMiniGame(new(Color, Kid.GetMoodTimer()), TriggerKidCooldown);
         }
@@ -24,7 +23,7 @@ public class Seat : MiniGameTrigger
 
     private void TriggerKidCooldown() 
     {
-        if (IsInteractable && IsOccupied) 
+        if (IsInteractable && IsOccupied()) 
         {
             Kid.TriggerCooldown();
         }
@@ -44,6 +43,11 @@ public class Seat : MiniGameTrigger
     private SeatColor GetRandomColor()
     {
         return (SeatColor)Range(0, Enum.GetValues(typeof(SeatColor)).Length);
+    }
+
+    public bool IsOccupied()
+    {
+        return Kid != null;
     }
 
     public enum SeatColor

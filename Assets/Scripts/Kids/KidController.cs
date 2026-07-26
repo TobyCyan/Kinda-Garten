@@ -83,4 +83,9 @@ public class KidController : MonoBehaviour
     {
         return moodTimer;
     }
+
+    public bool IsInCooldown()
+    {
+        return _isInCooldown;
+    }
 }
