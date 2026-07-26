@@ -15300,6 +15300,26 @@ PrefabInstance:
       propertyPath: minCooldownTimer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3243053083987996304, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
+      propertyPath: kidVariations.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243053083987996304, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
+      propertyPath: 'kidVariations.Array.data[0]'
+      value: 
+      objectReference: {fileID: 4651694108436705377, guid: 8f47bcece9e228b42858b82bf5954b47, type: 3}
+    - target: {fileID: 3243053083987996304, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
+      propertyPath: 'kidVariations.Array.data[1]'
+      value: 
+      objectReference: {fileID: 4651694108436705377, guid: 3f80bd17e77ac1d45a929266f0d7b2d6, type: 3}
+    - target: {fileID: 3243053083987996304, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
+      propertyPath: 'kidVariations.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4651694108436705377, guid: a0d5050cd5bbbdc44bd3452ee895c719, type: 3}
+    - target: {fileID: 3243053083987996304, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
+      propertyPath: 'kidVariations.Array.data[3]'
+      value: 
+      objectReference: {fileID: 4651694108436705377, guid: 0b7a7a7df81f5084ca1f770df60b71ac, type: 3}
     - target: {fileID: 4155864004587179252, guid: 67f262382c6bc8f4e998893c5ba3c416, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

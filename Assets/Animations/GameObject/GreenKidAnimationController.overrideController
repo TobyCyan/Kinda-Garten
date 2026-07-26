@@ -7,5 +7,11 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: GreenKidAnimationController
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 48a564fc9b0daca499e7ed90b9c44a5c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 624c3217d4a11644abc89b9eb9746874, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a357ba60df558404bad92314a77ef782, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 03969222b14c67c46a460e58975b3373, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 53fdde72bc61958428fbde3124c91df9, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 105719ff6b2ca7947afe24bf3cd18119, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 2098af66381629646b5f34af135d0c53, type: 2}

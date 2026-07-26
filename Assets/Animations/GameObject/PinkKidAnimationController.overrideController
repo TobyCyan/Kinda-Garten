@@ -7,5 +7,11 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PinkKidAnimationController
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 48a564fc9b0daca499e7ed90b9c44a5c, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 624c3217d4a11644abc89b9eb9746874, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fd39472c718554a4fbf417ae7ccac4ce, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 03969222b14c67c46a460e58975b3373, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6ae7f2c114af2ae43a65f6a97c28dd15, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 105719ff6b2ca7947afe24bf3cd18119, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ae1229230decbc4458e12beadbac3bbd, type: 2}
