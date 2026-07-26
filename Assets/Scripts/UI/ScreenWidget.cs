@@ -7,8 +7,8 @@ public abstract class ScreenWidget : MonoBehaviour
     [SerializeField] private Button button;
     [SerializeField] private CanvasGroup screenCanvas;
 
-    public event Action OnScreenOpen;
-    public event Action OnScreenClose;
+    public event Action<ScreenWidget> OnScreenOpen;
+    public event Action<ScreenWidget> OnScreenClose;
     void Start()
     {
         button.onClick.AddListener(ButtonClick);
@@ -20,7 +20,7 @@ public abstract class ScreenWidget : MonoBehaviour
         screenCanvas.blocksRaycasts = true;
         OnOpenScreen();
 
-        OnScreenOpen?.Invoke();
+        OnScreenOpen?.Invoke(this);
     }
 
     public void CloseScreen()
@@ -29,7 +29,7 @@ public abstract class ScreenWidget : MonoBehaviour
         screenCanvas.blocksRaycasts = false;
         OnCloseScreen();
 
-        OnScreenClose?.Invoke();
+        OnScreenClose?.Invoke(this);
     }
 
     private void ButtonClick()

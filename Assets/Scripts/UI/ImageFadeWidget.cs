@@ -12,12 +12,12 @@ public class ImageFadeWidget : MonoBehaviour
     public async Task FadeIn()
     {
         panel.raycastTarget = true;
-        await panel.DOFade(1.0f, fadeInDuration).AsyncWaitForCompletion();
+        await panel.DOFade(1.0f, fadeInDuration).SetUpdate(true).AsyncWaitForCompletion();
     }
 
     public async Task FadeOut()
     {
-        await panel.DOFade(0.0f, fadeOutDuration).AsyncWaitForCompletion();
+        await panel.DOFade(0.0f, fadeOutDuration).SetUpdate(true).AsyncWaitForCompletion();
         panel.raycastTarget = false;
     }
 }

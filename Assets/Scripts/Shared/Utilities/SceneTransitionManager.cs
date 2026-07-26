@@ -37,5 +37,6 @@ public static class SceneTransitionManager
         {
             await Task.Yield();
         }
+        GameStates.IsGameFinish = false;
     }
 }

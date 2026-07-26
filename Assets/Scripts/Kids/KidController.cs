@@ -30,6 +30,8 @@ public class KidController : MonoBehaviour
 
     private void Update()
     {
+        if (GameStates.IsGameFinish || GameStates.IsPaused) return;
+
         if (_isInCooldown)
         {
             _currentCooldownTimer += Time.deltaTime;

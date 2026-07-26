@@ -9,6 +9,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
 {
     // UI
     [SerializeField] private TextMeshProUGUI definitionText;
+    [SerializeField] private GameObject definitionObject;
     [SerializeField] private SpriteRenderer woodenCase;
 
     // Prefabs for the letter blocks
@@ -58,7 +59,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
     {
         var word = WordPool.GetRandomWord();
         definitionText.text = word.Definition;
-        definitionText.enabled = true;
+        definitionObject.SetActive(true);
         woodenCase.enabled = true;
 
         PuzzleData puzzleData = GetPuzzleData(word.Word);
@@ -69,7 +70,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
 
     public void CleanUpMiniGame()
     {
-        definitionText.enabled = false;
+        definitionObject.SetActive(false);
         woodenCase.enabled = false;
         if (currentPuzzleData == null)
             return;
