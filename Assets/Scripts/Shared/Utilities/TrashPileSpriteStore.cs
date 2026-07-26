@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TrashPileSpriteStore : SpriteStore
 {
-    private const string SPRITE_SHEET_PATH = "Sprites/Trash Piles";
+    private const string SPRITE_SHEET_PATH = "Sprites/Props/Trash Piles";
 
     private static readonly Dictionary<string, Sprite> spritesNameMap = new();
 

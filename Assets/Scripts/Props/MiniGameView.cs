@@ -8,7 +8,7 @@ public class MiniGameView : MonoBehaviour
     public void ShowView(MiniGameContext context)
     {
         gameObject.SetActive(true);
-        baseRenderer.sprite = SeatSpriteStore.GetTableSprite(context.SeatColor);
+        baseRenderer.sprite = SeatSpriteStore.GetTableTopDownSprite(context.SeatColor);
         baseRenderer.enabled = true;
 
         moodTimerUi.Init(context.MoodTimerRef);
