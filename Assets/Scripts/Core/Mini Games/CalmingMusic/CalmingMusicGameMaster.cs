@@ -145,6 +145,7 @@ public class CalmingMusicGameMaster : MonoBehaviour, IMiniGameMaster
 
     private IEnumerator CompleteAfterFeedback()
     {
+        SfxManager.Instance.Play(SfxId.MiniGameSuccess);
         yield return new WaitForSecondsRealtime(feedbackDuration);
 
         isActive = false;

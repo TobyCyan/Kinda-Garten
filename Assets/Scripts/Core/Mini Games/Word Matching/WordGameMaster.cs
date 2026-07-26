@@ -180,6 +180,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
 
     private IEnumerator EndGame()
     {
+        SfxManager.Instance.Play(SfxId.MiniGameSuccess);
         definitionText.text = STATUS_CORRECT;
         yield return new WaitForSeconds(DURATION_ON_CORRECT);
         OnMiniGameCompleted?.Invoke();
