@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static UnityEngine.Random;
-using static Seat;
 
 public class MiniGameManager : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class MiniGameManager : MonoBehaviour
     [SerializeField] private MiniGameView miniGameView;
     private List<IMiniGameMaster> gameMasters = new();
     private IMiniGameMaster currentGameMaster;
+    private MiniGameContext currentContext;
 
     public event Action OnMiniGameCompleted;
 
@@ -46,11 +46,14 @@ public class MiniGameManager : MonoBehaviour
         currentGameMaster = gameMaster;
         gameMaster.GenerateMiniGame();
         gameMaster.OnMiniGameCompleted += CompleteMiniGame;
+
+        currentContext = context;
+        context.MoodTimerRef.OnTimerFinished += CompleteMiniGame;
     }
 
     private void StopMiniGame()
     {
-        if (currentGameMaster == null)
+        if (currentGameMaster == null || currentContext == null)
         {
             return;
         }
@@ -58,6 +61,9 @@ public class MiniGameManager : MonoBehaviour
         currentGameMaster.CleanUpMiniGame();
         currentGameMaster.OnMiniGameCompleted -= CompleteMiniGame;
         currentGameMaster = null;
+
+        currentContext.MoodTimerRef.OnTimerFinished -= CompleteMiniGame;
+        currentContext = null;
 
         miniGameView.HideView();
         GameManager.Instance.SetPlayerActiveStatus(true);

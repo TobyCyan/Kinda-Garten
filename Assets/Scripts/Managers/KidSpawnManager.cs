@@ -69,7 +69,7 @@ public class KidSpawnManager : MonoBehaviour
 
             var randomCooldownTimer = Random.Range(minCooldownTimer, maxCooldownTimer + 1);
             kidObject.OnCooldownTimerFinished += KidObject_OnCooldownTimerFinished;
-            kidObject.OnMoodTimerFinished += KidObject_OnMoodTimerFinished;
+            kidObject.GetMoodTimer().OnTimerFinished += KidObject_OnMoodTimerFinished;
 
             kidObject.SetupData(randomMoodTimer, randomCooldownTimer);
         }
@@ -79,9 +79,8 @@ public class KidSpawnManager : MonoBehaviour
         }
     }
 
-    private void KidObject_OnMoodTimerFinished(KidController kidController)
+    private void KidObject_OnMoodTimerFinished()
     {
-        kidController.CrashoutAndRemove();
         PenaltyManager.Instance.AddPenalty();
     }
 

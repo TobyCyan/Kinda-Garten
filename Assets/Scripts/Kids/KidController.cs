@@ -13,8 +13,6 @@ public class KidController : MonoBehaviour
     private float _currentMoodTimer;
     private float _currentCooldownTimer;
 
-
-    public event Action<KidController> OnMoodTimerFinished;
     public event Action<KidController> OnCooldownTimerFinished;
 
     private bool _isInCooldown = false;
@@ -45,16 +43,17 @@ public class KidController : MonoBehaviour
         else
         {
             _currentMoodTimer -= Time.deltaTime * AlarmManager.MoodTimerSpeedMultiplier;
-            moodTimer.RefreshUI(_currentMoodTimer);
+            moodTimer.UpdateTimer(_currentMoodTimer);
 
             if (_currentMoodTimer > 0) return;
 
             _currentMoodTimer = _baseMoodDuration;
             TriggerCooldown();
-            OnMoodTimerFinished?.Invoke(this);
+            moodTimer.InvokeOnTimerFinished();
         }
 
     }
+
     public void SetupData(float moodDuration, float cooldownDuration)
     {
         _isFirstInit = true;
@@ -64,6 +63,7 @@ public class KidController : MonoBehaviour
         _baseCooldownDuration = cooldownDuration;
 
         moodTimer.Init(moodDuration);
+        moodTimer.OnTimerFinished += CrashoutAndRemove;
 
         if(!_isFirstInit)
         {
@@ -91,8 +91,10 @@ public class KidController : MonoBehaviour
     public void CrashoutAndRemove()
     {
         Debug.Log("Crashout");
+        moodTimer.CleanUp();
+
         //Trigger Animation
         //Wait for few seconds
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }
