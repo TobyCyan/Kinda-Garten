@@ -46,7 +46,6 @@ public class PenaltyManager : MonoBehaviour
 
     public void AddPenalty()
     {
-        Debug.Log("Add penalty");
         if (HasGameFailed)
         {
             return;
