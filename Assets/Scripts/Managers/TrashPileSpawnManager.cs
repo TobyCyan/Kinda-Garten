@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System;
+using static UnityEngine.Random;
 
 public class TrashPileSpawnManager : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class TrashPileSpawnManager : MonoBehaviour
     private float trashPileCleanUpTime = 1.0f;
     private bool isActive;
     private readonly List<Vector3Int> walkableCells = new();
-    private readonly HashSet<Vector3Int> occupiedCells = new();
+    private readonly List<Vector3Int> spawnableCells = new();
 
     public void InitConfigs(bool isActive, float minInterval, float maxInterval, float trashPileCleanUpTime)
     {
@@ -34,6 +36,7 @@ public class TrashPileSpawnManager : MonoBehaviour
             if (walkable.HasTile(pos) & !obstacle.HasTile(pos))
             {
                 walkableCells.Add(pos);
+                spawnableCells.Add(pos);
             }
         }
     }
@@ -48,23 +51,34 @@ public class TrashPileSpawnManager : MonoBehaviour
     {
         while (true)
         {
-            float spawnInterval = Random.Range(minSpawnInterval, maxSpawnInterval);
+            float spawnInterval = Range(minSpawnInterval, maxSpawnInterval);
             yield return new WaitForSeconds(spawnInterval);
-            Vector3 spawnPosition = GetSpawnCellPosition();
-            SpawnTrashPile(spawnPosition);
-            occupiedCells.Add(walkable.WorldToCell(spawnPosition));
+            try
+            {
+                Vector3 spawnPosition = GetSpawnCellPosition();
+                SpawnTrashPile(spawnPosition);
+                spawnableCells.Remove(walkable.WorldToCell(spawnPosition));
+            }
+            catch (Exception)
+            {
+                continue;
+            }
         }
     }
 
     public bool IsCellOccupied(Vector3Int cell)
     {
-        return occupiedCells.Contains(cell);
+        return !spawnableCells.Contains(cell);
     }
 
-    private Vector3 GetSpawnCellPosition()
+    private Vector3 GetSpawnCellPosition() 
     {
-        int randomIndex = Random.Range(0, walkableCells.Count);
-        return walkable.GetCellCenterWorld(walkableCells[randomIndex]);
+        if (spawnableCells.Count == 0)
+        {
+            throw new SpawnException("No spawnable cells available for trash pile spawning.");
+        }
+        int randomIndex = Range(0, spawnableCells.Count);
+        return walkable.GetCellCenterWorld(spawnableCells[randomIndex]);
     }
     
     private void SpawnTrashPile(Vector3 position)
@@ -72,14 +86,14 @@ public class TrashPileSpawnManager : MonoBehaviour
         GameObject go = Instantiate(trashPilePrefab, position, Quaternion.identity);
         if (go.TryGetComponent(out TrashPile trashPile))
         {
-            trashPile.OnHoldCompleted += () => FreeUpOccupiedCell(position);
+            trashPile.OnHoldCompleted += () => FreeCell(position);
             trashPile.Init(trashPileCleanUpTime);
         }
     }
 
-    private void FreeUpOccupiedCell(Vector3 pos)
+    private void FreeCell(Vector3 pos)
     {
         Vector3Int cell = walkable.WorldToCell(pos);
-        occupiedCells.Remove(cell);
+        spawnableCells.Add(cell);
     }
 }
