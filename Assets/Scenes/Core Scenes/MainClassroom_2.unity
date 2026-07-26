@@ -14884,10 +14884,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stamp Rally Mini Game
       objectReference: {fileID: 0}
-    - target: {fileID: 9159885364796537195, guid: 5ad5832adce2cc94d98eb65098425c42, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15640,7 +15636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6
+      value: 4.81
       objectReference: {fileID: 0}
     - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
       propertyPath: m_LocalPosition.y
