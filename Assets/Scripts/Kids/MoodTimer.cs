@@ -23,8 +23,9 @@ public class MoodTimer : MonoBehaviour
 
     public void RefreshUI(float currentMoodTimer)
     {
-        moodTimerText.text = currentMoodTimer.ToString("F0");
-        moodTimerText.color = MoodFormatter.FormatMoodColor(currentMoodTimer, BaseMoodTimer);
+        int displayedTime = Mathf.Max(0, Mathf.CeilToInt(currentMoodTimer));
+        moodTimerText.text = displayedTime.ToString();
+        moodTimerText.color = MoodFormatter.FormatMoodColor(displayedTime, BaseMoodTimer);
         OnTimerUpdate?.Invoke(currentMoodTimer);
     }
 }
