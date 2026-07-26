@@ -288,6 +288,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82215ba45dff1548bbdb5f19500aa88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SelectableLetterBlock
+  blockRenderer: {fileID: 2319174237994030024}
+  textMesh: {fileID: 7772220733943223167}
 --- !u!61 &1802690988375397724
 BoxCollider2D:
   m_ObjectHideFlags: 0

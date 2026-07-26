@@ -14816,6 +14816,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Word Mini Game
       objectReference: {fileID: 0}
+    - target: {fileID: 7882476600672797923, guid: e5b2cc4da278ca04d9b0e7c2b45a2e33, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8221615468880611125, guid: e5b2cc4da278ca04d9b0e7c2b45a2e33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
