@@ -7,7 +7,11 @@ using static UnityEngine.Random;
 
 public class WordGameMaster : MonoBehaviour, IMiniGameMaster
 {
+    // UI
     [SerializeField] private TextMeshProUGUI definitionText;
+    [SerializeField] private SpriteRenderer woodenCase;
+
+    // Prefabs for the letter blocks
     [SerializeField] private GameObject letterBlockPrefab;
     [SerializeField] private GameObject selectableLetterBlockPrefab;
     [SerializeField] private GameObject emptyLetterBlockPrefab;
@@ -17,7 +21,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
     private const int MIN_EXTRA_BLOCKS = 2;
     private const int MAX_EXTRA_BLOCKS = 3;
 
-    [SerializeField] private float rowWidth = 7.5f;   // total width available for the row
+    [SerializeField] private float rowWidth = 8.0f;   // total width available for the row
     [SerializeField] private int maxVisibleBlocks = 8;
     [SerializeField] private Transform displayedRowCenter;
     [SerializeField] private Transform selectableRowCenter;
@@ -55,6 +59,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
         var word = WordPool.GetRandomWord();
         definitionText.text = word.Definition;
         definitionText.enabled = true;
+        woodenCase.enabled = true;
 
         PuzzleData puzzleData = GetPuzzleData(word.Word);
         currentPuzzleData = puzzleData;
@@ -65,6 +70,7 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
     public void CleanUpMiniGame()
     {
         definitionText.enabled = false;
+        woodenCase.enabled = false;
         if (currentPuzzleData == null)
             return;
 
