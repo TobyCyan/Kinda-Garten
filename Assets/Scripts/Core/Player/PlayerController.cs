@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference interactActionReference;
     [SerializeField] private Tilemap walkable;
     [SerializeField] private Tilemap obstacle;
+
+    private Animator animator;
+
     private bool isActive = true;
     private Vector3 targetWorldPos;
     private bool isMoving = false;
@@ -19,7 +22,12 @@ public class PlayerController : MonoBehaviour
     private bool isHolding = false;
     private IHoldInteractable currentHoldInteractable;
     private Seat currentInteractableSeat;
-    
+
+
+    private void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     private void Start()
     {
@@ -61,6 +69,12 @@ public class PlayerController : MonoBehaviour
         {
             targetWorldPos = walkable.GetCellCenterWorld(targetCell);
             isMoving = true;
+
+            if (animator != null)
+            {
+                animator.SetFloat("MoveX", gridDirection.x);
+                animator.SetFloat("MoveY", gridDirection.y);
+            }
         }
     }
 
