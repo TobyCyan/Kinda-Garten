@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -28,6 +29,9 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
     [SerializeField] private Transform selectableRowCenter;
 
     private PuzzleData currentPuzzleData;
+
+    private const string STATUS_CORRECT = "Correct!";
+    private const float DURATION_ON_CORRECT = 0.75f;
 
     public class PuzzleData
     {
@@ -170,8 +174,15 @@ public class WordGameMaster : MonoBehaviour, IMiniGameMaster
                 .ToLower();
         if (currentWord.Equals(displayedWord))
         {
-            OnMiniGameCompleted?.Invoke();
+            StartCoroutine(EndGame());
         }
+    }
+
+    private IEnumerator EndGame()
+    {
+        definitionText.text = STATUS_CORRECT;
+        yield return new WaitForSeconds(DURATION_ON_CORRECT);
+        OnMiniGameCompleted?.Invoke();
     }
 
     private void ArrangeRow<T>(IReadOnlyList<T> blocks, Transform rowCenter) where T : LetterBlock
