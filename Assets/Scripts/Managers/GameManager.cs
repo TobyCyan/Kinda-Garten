@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
 
     private void OnGameFailed()
     {
-        Debug.Log("Call game over uI");
-        // Call Game Over UI
+        uiManager.OpenGameOverScreen();
     }
 }

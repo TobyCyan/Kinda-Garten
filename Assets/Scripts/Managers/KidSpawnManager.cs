@@ -50,8 +50,11 @@ public class KidSpawnManager : MonoBehaviour
     {
         while (true)
         {
+            while (GameStates.IsPaused || GameStates.IsGameFinish) { yield return null; }
+
             float spawnInterval = Random.Range(minNextSpawnTime, maxNextSpawnTime);
             yield return new WaitForSeconds(spawnInterval);
+            while (GameStates.IsPaused || GameStates.IsGameFinish) { yield return null; }
             SpawnKidAtRandomSeat();
         }
     }
