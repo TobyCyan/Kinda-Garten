@@ -43,6 +43,20 @@ public class SfxManager : MonoBehaviour
         StartCoroutine(ReturnWhenDone(source));
     }
 
+    public void PlayOnLoop(SfxId id)
+    {
+        if (!sfxDataById.TryGetValue(id, out var sfx))
+            return;
+        
+        if (sfx.clip == null)
+            return;
+        
+        var source = GetSource();
+        source.clip = sfx.clip;
+        source.loop = true;
+        source.Play();
+    }
+
     private AudioSource GetSource()
     {
         if (sourcePool.Count > 0)

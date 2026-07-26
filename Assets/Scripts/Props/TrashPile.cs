@@ -47,6 +47,7 @@ public class TrashPile : MonoBehaviour, IHoldInteractable
         {
             OnHoldCompleted?.Invoke();
             OnHoldCompleted = null;
+            SfxManager.Instance.Play(SfxId.TrashCleaned);
             Destroy(gameObject);
         }
     }

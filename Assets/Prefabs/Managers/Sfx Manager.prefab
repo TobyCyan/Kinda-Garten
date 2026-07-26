@@ -52,5 +52,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 392b3a03daf7b4d468eb1b2ce9a6ba6e, type: 2}
   - {fileID: 11400000, guid: fbed2e83bcc95c34887d34e0b4878d0d, type: 2}
   - {fileID: 11400000, guid: 86b5ba4b606cba348891420c930411bc, type: 2}
+  - {fileID: 11400000, guid: df7121f7cee7e0f4588e7385560e0b04, type: 2}
+  - {fileID: 11400000, guid: e875139d2ee03d94e88f816e6aae502c, type: 2}
+  - {fileID: 11400000, guid: 73fc8b3b1c7b50545ad6aa1c44a85a2a, type: 2}
+  - {fileID: 11400000, guid: 82825fe1e8fbfdc4f9d94d9a19230972, type: 2}
   audioSourcePrefab: {fileID: 8995409596910928522, guid: b0e0332742190064892fa55a59fcb3b1, type: 3}
   poolSize: 8

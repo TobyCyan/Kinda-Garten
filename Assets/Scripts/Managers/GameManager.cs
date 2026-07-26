@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
         miniGameManager.Init();
         penaltyManager.Init();
         uiManager.Init();
+
+        SfxManager.Instance.PlayOnLoop(SfxId.BackgroundMusic);
     }
 
     public bool IsCellOccupied(Vector3Int cell)

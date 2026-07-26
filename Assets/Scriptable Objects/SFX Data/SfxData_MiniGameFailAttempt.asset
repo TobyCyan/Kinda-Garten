@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d56155e4fb8d39d44975cd5061e11ebd, type: 3}
-  m_Name: SfxData_GameOver
+  m_Name: SfxData_MiniGameFailAttempt
   m_EditorClassIdentifier: Assembly-CSharp::SfxData
-  id: 6
-  clip: {fileID: 8300000, guid: dcd7036149894224786eae4d0ae987b2, type: 3}
+  id: 3
+  clip: {fileID: 8300000, guid: 4a0d5427a20348c4ca9a147e450887e3, type: 3}
