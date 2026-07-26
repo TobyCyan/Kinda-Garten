@@ -63,7 +63,7 @@ public class KidController : MonoBehaviour
 
         _baseCooldownDuration = cooldownDuration;
 
-        moodTimer.RefreshUI(moodDuration);
+        moodTimer.Init(moodDuration);
 
         if(!_isFirstInit)
         {
@@ -76,6 +76,16 @@ public class KidController : MonoBehaviour
     {
         _isInCooldown = true;
         moodTimer.SetVisiblity(false);
+    }
+
+    public MoodTimer GetMoodTimer()
+    {
+        return moodTimer;
+    }
+
+    public bool IsInCooldown()
+    {
+        return _isInCooldown;
     }
 
     public void CrashoutAndRemove()

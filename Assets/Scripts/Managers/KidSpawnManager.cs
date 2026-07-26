@@ -72,7 +72,6 @@ public class KidSpawnManager : MonoBehaviour
             kidObject.OnMoodTimerFinished += KidObject_OnMoodTimerFinished;
 
             kidObject.SetupData(randomMoodTimer, randomCooldownTimer);
-            randomSeat.IsOccupied = true;
         }
         else
         {
@@ -96,7 +95,7 @@ public class KidSpawnManager : MonoBehaviour
 
     private Seat GetRandomUnoccupiedSeat()
     {
-        var unoccupiedSeats = seats.Where(seat => !seat.IsOccupied).ToList();
+        var unoccupiedSeats = seats.Where(seat => !seat.IsOccupied()).ToList();
         if (unoccupiedSeats.Count == 0)
         {
             return null;

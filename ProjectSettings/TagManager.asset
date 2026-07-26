@@ -56,6 +56,9 @@ TagManager:
   - name: Mini Game
     uniqueID: 2611333261
     locked: 0
+  - name: Mini Game UI
+    uniqueID: 2355314801
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []
