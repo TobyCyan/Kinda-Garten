@@ -4,6 +4,7 @@ using UnityEngine;
 public class DayProgressBarWidget : MonoBehaviour
 {
     [SerializeField] private ProgressBar bar;
+    [SerializeField] private CanvasGroup group;
     [SerializeField] private float maxDurationDay;
 
     private float currentDuration;
@@ -39,5 +40,15 @@ public class DayProgressBarWidget : MonoBehaviour
             SfxManager.Instance.Play(SfxId.LevelSuccess);
             DayFinish?.Invoke();
         }
+    }
+
+    public void HideBar()
+    {
+        group.alpha = 0.0f;
+    }
+
+    public void ShowBar()
+    {
+        group.alpha = 1.0f;
     }
 }

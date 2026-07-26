@@ -7,13 +7,13 @@ public class TutorialPage : MonoBehaviour
 
     public void HideGroup()
     {
-        group.DOFade(0.0f, 0.25f);
+        group.DOFade(0.0f, 0.25f).SetUpdate(true);
         group.blocksRaycasts = false;
     }
 
     public void ShowGroup()
     {
-        group.DOFade(1.0f, 0.25f);
+        group.DOFade(1.0f, 0.25f).SetUpdate(true);
         group.blocksRaycasts = true;
     }
 
