@@ -18,7 +18,7 @@ public class Seat : MiniGameTrigger
     {
         if (IsInteractable && IsOccupied) 
         {
-            TriggerMiniGame(Color, TriggerKidCooldown);
+            TriggerMiniGame(new(Color, Kid.GetMoodTimer()), TriggerKidCooldown);
         }
     }
 

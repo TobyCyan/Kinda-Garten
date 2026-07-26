@@ -2727,6 +2727,10 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1343130135886069388, guid: 1bd1ea40a8d477945ad236e326e56193, type: 3}
+      propertyPath: moodTimerUi
+      value: 
+      objectReference: {fileID: 1294851347}
     - target: {fileID: 7204973422839484362, guid: 1bd1ea40a8d477945ad236e326e56193, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12697,6 +12701,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1291762627125781767, guid: c032dfbd0ccbd284fae08668ea06f82b, type: 3}
   m_PrefabInstance: {fileID: 4808458446536986780}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1294851347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5037291227337827138, guid: 1bd1ea40a8d477945ad236e326e56193, type: 3}
+  m_PrefabInstance: {fileID: 1207994137}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5833db276131524aa20ed118bbf5cf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoodTimerUI
 --- !u!1 &1374358785
 GameObject:
   m_ObjectHideFlags: 0
