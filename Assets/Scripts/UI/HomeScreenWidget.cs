@@ -14,6 +14,7 @@ public class HomeSceneWidget : MonoBehaviour
     private void Start()
     {
         playButton.onClick.AddListener(OnPlayClicked);
+        SfxManager.Instance.Play(SfxId.BackgroundMusic);
     }
 
     private async void OnPlayClicked()
