@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SfxData_GameOver
   m_EditorClassIdentifier: Assembly-CSharp::SfxData
   id: 6
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: dcd7036149894224786eae4d0ae987b2, type: 3}

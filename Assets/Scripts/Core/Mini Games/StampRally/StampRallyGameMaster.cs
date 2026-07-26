@@ -173,6 +173,7 @@ public class StampRallyGameMaster : MonoBehaviour, IMiniGameMaster
         acceptingInput = false;
         SetStampButtonsInteractable(false);
         SetStatus("Sequence complete!");
+        SfxManager.Instance.Play(SfxId.MiniGameSuccess);
 
         yield return new WaitForSeconds(wrongAttemptMessageDuration);
 
