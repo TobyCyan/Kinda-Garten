@@ -229,22 +229,6 @@ public class CalmingMusicGameMaster : MonoBehaviour, IMiniGameMaster
             wheelImage.preserveAspect = true;
             wheelImage.raycastTarget = false;
         }
-
-        if (targetZoneImage == null)
-        {
-            return;
-        }
-
-        if (wheelImage != null)
-        {
-            targetZoneImage.sprite = wheelImage.sprite;
-        }
-
-        targetZoneImage.type = Image.Type.Filled;
-        targetZoneImage.fillMethod = Image.FillMethod.Radial360;
-        targetZoneImage.fillOrigin = (int)Image.Origin360.Top;
-        targetZoneImage.fillClockwise = true;
-        targetZoneImage.raycastTarget = false;
     }
 
     private bool HasRequiredReferences()

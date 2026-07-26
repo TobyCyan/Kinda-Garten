@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameStates.IsGameFinish || GameStates.IsPaused) return;
+
         if (!isActive) { return; }
         
         if (isHolding)

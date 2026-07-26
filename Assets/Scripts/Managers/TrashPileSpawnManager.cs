@@ -51,8 +51,10 @@ public class TrashPileSpawnManager : MonoBehaviour
     {
         while (true)
         {
+            while (GameStates.IsPaused || GameStates.IsGameFinish) { yield return null; }
             float spawnInterval = Range(minSpawnInterval, maxSpawnInterval);
             yield return new WaitForSeconds(spawnInterval);
+            while (GameStates.IsPaused || GameStates.IsGameFinish) { yield return null; }
             try
             {
                 Vector3 spawnPosition = GetSpawnCellPosition();

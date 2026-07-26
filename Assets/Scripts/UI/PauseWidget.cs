@@ -7,9 +7,6 @@ public class PauseWdiget : ScreenWidget
     [SerializeField] private TextMeshProUGUI countdownText;
     [SerializeField] private GameObject pauseContentGroup;
 
-    private bool isPaused = false;
-
-    public bool IsPaused => isPaused;
     const float COUNTDOWN = 3;
 
     public override void OnButtonClick()
@@ -18,13 +15,13 @@ public class PauseWdiget : ScreenWidget
         pauseContentGroup.SetActive(false);
         countdownText.gameObject.SetActive(true);
 
-        StartCoroutine(CountdownToResume());
+        StartCoroutine(CountdownToResume(false));
     }
 
     protected override void OnOpenScreen()
     {
+        GameStates.IsPaused = true;
         Time.timeScale = 0.0f;
-        isPaused = true;
         pauseContentGroup.SetActive(true);
         countdownText.gameObject.SetActive(false);
     }
@@ -34,8 +31,36 @@ public class PauseWdiget : ScreenWidget
 
     }
 
-    IEnumerator CountdownToResume()
+    public void StartWithCountdown()
     {
+        pauseContentGroup.SetActive(false);
+        countdownText.gameObject.SetActive(true);
+        StartCoroutine(CountdownToResume(true));
+    }
+
+    IEnumerator CountdownToResume(bool isStarting)
+    {
+        if (isStarting)
+        {
+            countdownText.text = "Ready";
+
+            yield return new WaitForSecondsRealtime(2.0f);
+
+            countdownText.text = "Set";
+
+            yield return new WaitForSecondsRealtime(1.0f);
+
+            countdownText.text = "Go";
+
+            yield return new WaitForSecondsRealtime(0.5f);
+
+            GameStates.IsPaused = false;
+            Time.timeScale = 1.0f;
+            CloseScreen();
+
+            yield break;
+        }
+
         float currentCountdown = COUNTDOWN;
 
         while (currentCountdown > 0)
@@ -51,8 +76,8 @@ public class PauseWdiget : ScreenWidget
 
         yield return new WaitForSecondsRealtime(0.5f);
 
+        GameStates.IsPaused = false;
         Time.timeScale = 1.0f;
-        isPaused = false;
         CloseScreen();
     }
 }

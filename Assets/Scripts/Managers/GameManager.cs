@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TrashPileSpawnManager trashPileSpawnManager;
     [SerializeField] private MiniGameManager miniGameManager;
     [SerializeField] private PenaltyManager penaltyManager;
+    [SerializeField] private UIManager uiManager;
     private PlayerController player;
 
     [SerializeField] private GameConfigs gameConfigs;
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         trashPileSpawnManager.InitConfigs(gameConfigs.IsTrashPileSpawnActive,
                     gameConfigs.MinNextSpawnTimeTrashPile, gameConfigs.MaxNextSpawnTimeTrashPile,
                     gameConfigs.TrashPileCleanUpTime);
+        uiManager.InitConfigs();
     }
 
     private void InitManagers()
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
         trashPileSpawnManager.Init();
         miniGameManager.Init();
         penaltyManager.Init();
+        uiManager.Init();
     }
 
     public bool IsCellOccupied(Vector3Int cell)
@@ -72,7 +75,6 @@ public class GameManager : MonoBehaviour
 
     private void OnGameFailed()
     {
-        Debug.Log("Call game over uI");
-        // Call Game Over UI
+        uiManager.OpenGameOverScreen();
     }
 }
