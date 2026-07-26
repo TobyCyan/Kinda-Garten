@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class KidSpawnManager : MonoBehaviour
 {
-    [SerializeField] private KidController kidController;
+    [SerializeField] private List<KidController> kidVariations;
 
     // Configs
     private float minNextSpawnTime = 1.0f;
@@ -62,9 +62,10 @@ public class KidSpawnManager : MonoBehaviour
     private void SpawnKidAtRandomSeat()
     {
         Seat randomSeat = GetRandomUnoccupiedSeat();
+        KidController selectedKid = GetRandomKidVariation();
         if (randomSeat != null)
         {
-            var kidObject = Instantiate(kidController, randomSeat.SeatTransform);
+            var kidObject = Instantiate(selectedKid, randomSeat.SeatTransform);
             randomSeat.Kid = kidObject;
 
             var randomMoodTimer = Random.Range(minMoodTimer, maxMoodTimer + 1);
@@ -104,5 +105,11 @@ public class KidSpawnManager : MonoBehaviour
         }
         int randomIndex = Random.Range(0, unoccupiedSeats.Count);
         return unoccupiedSeats[randomIndex];
+    }
+
+    private KidController GetRandomKidVariation()
+    {
+        int selectedKidIndex = Random.Range(0, kidVariations.Count);
+        return kidVariations[selectedKidIndex];
     }
 }

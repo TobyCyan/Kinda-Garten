@@ -5,7 +5,11 @@ using UnityEngine;
 public class KidController : MonoBehaviour
 {
     [SerializeField] private MoodTimer moodTimer;
-    [SerializeField] private List<Sprite> kidVariations;
+
+    private Animator animator;
+    private const String IS_SAD = "IsSad";
+    private const String IS_CRASHINGOUT = "IsCrashingOut";
+    private const String IS_HAPPY = "IsHappy";
 
     private float _baseMoodDuration;
     private float _baseCooldownDuration;
@@ -18,19 +22,23 @@ public class KidController : MonoBehaviour
     private bool _isInCooldown = false;
     private bool _isFirstInit = false;
 
-    private void Start() 
+    private bool isSad = false;
+    private bool isCrashingOut = false;
+    private bool isHappy = false;
+
+
+    private void Awake()
     {
-        SpriteRenderer kidSprite = GetComponentInChildren<SpriteRenderer>();
-        if (kidVariations != null && kidVariations.Count > 0 && kidSprite != null)
-        {
-            int randomIndex = UnityEngine.Random.Range(0, kidVariations.Count);
-            kidSprite.sprite = kidVariations[randomIndex];
-        }
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
     {
         if (GameStates.IsGameFinish || GameStates.IsPaused) return;
+
+        animator.SetBool(IS_SAD, isSad);
+        animator.SetBool(IS_CRASHINGOUT, isCrashingOut);
+        animator.SetBool(IS_HAPPY, isHappy);
 
         if (_isInCooldown)
         {
@@ -46,6 +54,9 @@ public class KidController : MonoBehaviour
         {
             _currentMoodTimer -= Time.deltaTime * AlarmManager.MoodTimerSpeedMultiplier;
             moodTimer.UpdateTimer(_currentMoodTimer);
+
+            int displayedTime = Mathf.Max(0, Mathf.CeilToInt(_currentMoodTimer));
+            ChangeMoodState(displayedTime, moodTimer.BaseMoodTimer);
 
             if (_currentMoodTimer > 0) return;
 
@@ -78,6 +89,8 @@ public class KidController : MonoBehaviour
     {
         _isInCooldown = true;
         moodTimer.SetVisiblity(false);
+        isHappy = true;
+        isSad = false;
     }
 
     public MoodTimer GetMoodTimer()
@@ -96,8 +109,31 @@ public class KidController : MonoBehaviour
         SfxManager.Instance.Play(SfxId.KidCrashOut);
         moodTimer.CleanUp();
 
-        //Trigger Animation
-        //Wait for few seconds
-        Destroy(gameObject);
+        Destroy(gameObject, 2.0f);
+    }
+
+    public void ChangeMoodState(float moodValue, float baseMoodValue)
+    {
+        float moodRatio = moodValue / baseMoodValue;
+
+        if (moodRatio >= 0.35f)
+        {
+            isSad = false;
+            isCrashingOut = false;
+            isHappy = true;
+        }
+        else if (moodRatio > 0 && moodRatio < 0.35f)
+        {
+            isSad = true;
+            isCrashingOut = false;
+            isHappy = false;
+        } 
+        else if (moodRatio <= 0)
+        {
+            isSad = false;
+            isCrashingOut = true;
+            isHappy = false;
+        }
+        
     }
 }
