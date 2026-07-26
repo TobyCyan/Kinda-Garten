@@ -17,6 +17,10 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
         player = FindAnyObjectByType<PlayerController>();
+    }
+
+    private void Start()
+    {
         InitConfigs();
         InitManagers();
     }
