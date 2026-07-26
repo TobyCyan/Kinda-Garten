@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99521d6b84bacb547bcba4d9bd6bbbbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrashPile
+  selectionMaterial: {fileID: 2100000, guid: c845dd91fef7c884bb50acc2a0eb99eb, type: 2}
   progressBar: {fileID: 6130609982417247193}
   renderer: {fileID: 5903528636016582582}
 --- !u!61 &2182213798631693171

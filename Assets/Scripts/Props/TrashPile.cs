@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class TrashPile : MonoBehaviour, IHoldInteractable
+public class TrashPile : Selectable, IHoldInteractable
 {
     private float cleanUpTime = 1.0f;
     [SerializeField] private ProgressBar progressBar;
