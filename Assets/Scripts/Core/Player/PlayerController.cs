@@ -191,6 +191,11 @@ public class PlayerController : MonoBehaviour
             currentInteractableSeat = seat;
             currentInteractableSeat.IsInteractable = true;
         }
+
+        if (collision.TryGetComponent<Selectable>(out var selectable))
+        {
+            selectable.Select();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -210,6 +215,11 @@ public class PlayerController : MonoBehaviour
         {
             currentInteractableSeat = seat;
             currentInteractableSeat.IsInteractable = false;
+        }
+
+        if (collision.TryGetComponent<Selectable>(out var selectable))
+        {
+            selectable.Deselect();
         }
     }
 }

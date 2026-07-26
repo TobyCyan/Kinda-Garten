@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
-using static Seat;
 
-public class MiniGameTrigger : MonoBehaviour
+public class MiniGameTrigger : Selectable
 {
     public void TriggerMiniGame(MiniGameContext context, Action callback)
     {

@@ -139,9 +139,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d717863738d4984d9f51977cdd47893, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Seat
+  selectionMaterial: {fileID: 2100000, guid: b0b8c72d97aa79d458075c80b4850cf2, type: 2}
   stoolRenderer: {fileID: 6617776554057526935}
   tableRenderer: {fileID: 5993406745444780823}
-  kid: {fileID: 0}
+  Kid: {fileID: 0}
 --- !u!61 &8297129028022813894
 BoxCollider2D:
   m_ObjectHideFlags: 0
