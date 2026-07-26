@@ -18,6 +18,7 @@ public class HomeSceneWidget : MonoBehaviour
 
     private async void OnPlayClicked()
     {
+        SfxManager.Instance.Play(SfxId.ButtonClick);
         playButton.onClick.RemoveAllListeners();
 
         await fadeWidget.FadeIn();
