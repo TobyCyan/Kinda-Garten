@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// </summary>
 public class CalmingMusicTest : MonoBehaviour
 {
-    [SerializeField] private CalmingMusicMiniGame calmingMusicMiniGame;
+    [SerializeField] private CalmingMusicGameMaster calmingMusicMiniGame;
     [SerializeField] private Button startButton;
 
     private bool hasStarted;

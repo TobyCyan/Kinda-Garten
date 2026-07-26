@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// Stops a rotating UI hand inside a radial target slice.
 /// One successful stop completes the mini-game; misses retry with a new target.
 /// </summary>
-public class CalmingMusicMiniGame : MonoBehaviour, IMiniGameMaster
+public class CalmingMusicGameMaster : MonoBehaviour, IMiniGameMaster
 {
     [Header("Required UI")]
     [Tooltip("Root containing the mini-game UI. Keep this controller outside that root.")]
