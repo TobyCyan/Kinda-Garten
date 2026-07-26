@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TrashPile : MonoBehaviour, IHoldInteractable
 {
-    [SerializeField] private float cleanupTime = 2.5f;
+    private float cleanUpTime = 1.0f;
     [SerializeField] private ProgressBar progressBar;
     [SerializeField] private SpriteRenderer renderer;
     private float cleanupProgress = 0f;
@@ -17,8 +17,9 @@ public class TrashPile : MonoBehaviour, IHoldInteractable
         }
     }
 
-    public void Init()
+    public void Init(float cleanUpTime)
     {
+        this.cleanUpTime = cleanUpTime;
         if (progressBar != null)
         {
             progressBar.HideBar();
@@ -41,8 +42,8 @@ public class TrashPile : MonoBehaviour, IHoldInteractable
     public void DoWhileHold()
     {
         cleanupProgress += Time.deltaTime;
-        progressBar.UpdateFill(cleanupProgress, cleanupTime);
-        if (cleanupProgress >= cleanupTime)
+        progressBar.UpdateFill(cleanupProgress, cleanUpTime);
+        if (cleanupProgress >= cleanUpTime)
         {
             OnHoldCompleted?.Invoke();
             OnHoldCompleted = null;

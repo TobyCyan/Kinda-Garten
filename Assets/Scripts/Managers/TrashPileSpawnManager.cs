@@ -10,17 +10,19 @@ public class TrashPileSpawnManager : MonoBehaviour
     [SerializeField] private Tilemap walkable;
     private float minSpawnInterval = 5f;
     private float maxSpawnInterval = 10f;
+    private float trashPileCleanUpTime = 1.0f;
     private bool isActive;
     private readonly List<Vector3Int> walkableCells = new();
     private readonly HashSet<Vector3Int> occupiedCells = new();
 
-    public void InitConfigs(bool isActive, float minInterval, float maxInterval)
+    public void InitConfigs(bool isActive, float minInterval, float maxInterval, float trashPileCleanUpTime)
     {
         this.isActive = isActive;
         if (!isActive) return;
 
         minSpawnInterval = minInterval;
         maxSpawnInterval = maxInterval;
+        this.trashPileCleanUpTime = trashPileCleanUpTime;
         InitTileMapInfo();
     }
 
@@ -71,7 +73,7 @@ public class TrashPileSpawnManager : MonoBehaviour
         if (go.TryGetComponent(out TrashPile trashPile))
         {
             trashPile.OnHoldCompleted += () => FreeUpOccupiedCell(position);
-            trashPile.Init();
+            trashPile.Init(trashPileCleanUpTime);
         }
     }
 

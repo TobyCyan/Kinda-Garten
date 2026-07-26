@@ -16,4 +16,5 @@ public class GameConfigs : ScriptableObject
     public bool IsTrashPileSpawnActive;
     public float MinNextSpawnTimeTrashPile = 5.0f;
     public float MaxNextSpawnTimeTrashPile = 10.0f;
+    public float TrashPileCleanUpTime = 1.0f;
 }

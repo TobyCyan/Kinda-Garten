@@ -34,7 +34,8 @@ public class GameManager : MonoBehaviour
                     gameConfigs.MinMoodTimer, gameConfigs.MaxMoodTimer,
                     gameConfigs.MinCooldownTimer, gameConfigs.MaxCooldownTimer);
         trashPileSpawnManager.InitConfigs(gameConfigs.IsTrashPileSpawnActive,
-                    gameConfigs.MinNextSpawnTimeTrashPile, gameConfigs.MaxNextSpawnTimeTrashPile);
+                    gameConfigs.MinNextSpawnTimeTrashPile, gameConfigs.MaxNextSpawnTimeTrashPile,
+                    gameConfigs.TrashPileCleanUpTime);
     }
 
     private void InitManagers()
