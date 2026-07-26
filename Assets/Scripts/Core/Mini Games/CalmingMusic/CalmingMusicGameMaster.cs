@@ -51,6 +51,10 @@ public class CalmingMusicGameMaster : MonoBehaviour, IMiniGameMaster
     // Store the randomly chosen size for the current attempt
     private float currentTargetZoneDegrees;
 
+    private const string STATUS_INSTRUCTION = "Stop the hand inside the green area.";
+    private const string STATUS_SUCCESS = "Perfect timing!";
+    private const string STATUS_FAIL = "Missed! Try again.";
+
     private void Awake()
     {
         ConfigureImages();
@@ -112,12 +116,12 @@ public class CalmingMusicGameMaster : MonoBehaviour, IMiniGameMaster
 
         if (IsInsideTarget(handAngle))
         {
-            SetStatus("Perfect timing!");
+            SetStatus(STATUS_SUCCESS);
             StartCoroutine(CompleteAfterFeedback());
         }
         else
         {
-            SetStatus("Missed! Try again.");
+            SetStatus(STATUS_FAIL);
             SfxManager.Instance.Play(SfxId.MiniGameFailAttempt);
             StartCoroutine(RetryAfterFeedback());
         }
@@ -141,6 +145,7 @@ public class CalmingMusicGameMaster : MonoBehaviour, IMiniGameMaster
 
     private IEnumerator CompleteAfterFeedback()
     {
+        SfxManager.Instance.Play(SfxId.MiniGameSuccess);
         yield return new WaitForSecondsRealtime(feedbackDuration);
 
         isActive = false;
@@ -154,7 +159,7 @@ public class CalmingMusicGameMaster : MonoBehaviour, IMiniGameMaster
     {
         handAngle = GetStartingAngleOutsideTarget();
         ApplyHandAngle();
-        SetStatus("Stop the hand inside the green slice");
+        SetStatus(STATUS_INSTRUCTION);
 
         inputEnabledAt = Time.unscaledTime + InputGracePeriod;
         isSpinning = true;

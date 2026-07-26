@@ -45,10 +45,10 @@ public class MiniGameManager : MonoBehaviour
 
         currentGameMaster = gameMaster;
         gameMaster.GenerateMiniGame();
-        gameMaster.OnMiniGameCompleted += () => CompleteMiniGame(true);
+        gameMaster.OnMiniGameCompleted += CompleteMiniGame;
 
         currentContext = context;
-        context.MoodTimerRef.OnTimerFinished += () => CompleteMiniGame(false);
+        context.MoodTimerRef.OnTimerFinished += CompleteMiniGame;
     }
 
     private void StopMiniGame()
@@ -59,22 +59,18 @@ public class MiniGameManager : MonoBehaviour
         }
 
         currentGameMaster.CleanUpMiniGame();
-        currentGameMaster.OnMiniGameCompleted -= () => CompleteMiniGame(true);
+        currentGameMaster.OnMiniGameCompleted -= CompleteMiniGame;
         currentGameMaster = null;
 
-        currentContext.MoodTimerRef.OnTimerFinished -= () => CompleteMiniGame(false);
+        currentContext.MoodTimerRef.OnTimerFinished -= CompleteMiniGame;
         currentContext = null;
 
         miniGameView.HideView();
         GameManager.Instance.SetPlayerActiveStatus(true);
     }
 
-    private void CompleteMiniGame(bool isSuccessfulAttempt)
+    private void CompleteMiniGame()
     {
-        if (isSuccessfulAttempt)
-        {
-            SfxManager.Instance.Play(SfxId.MiniGameSuccess);
-        }
         OnMiniGameCompleted?.Invoke();
         OnMiniGameCompleted = null;
         StopMiniGame();

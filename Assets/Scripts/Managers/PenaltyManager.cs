@@ -26,22 +26,8 @@ public class PenaltyManager : MonoBehaviour
 
     public void Init()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
         RefreshPenaltyDisplay();
-    }
-
-    private void OnDestroy()
-    {
-        if (Instance == this)
-        {
-            Instance = null;
-        }
     }
 
     public void AddPenalty()

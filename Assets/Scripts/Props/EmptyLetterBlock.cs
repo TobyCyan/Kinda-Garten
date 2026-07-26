@@ -21,7 +21,7 @@ public class EmptyLetterBlock : LetterBlock, IDropHandler
             char droppedLetter = droppedLetterText.text[0];
             if (IsCorrectLetter(droppedLetter))
             {
-                SfxManager.Instance.Play(SfxId.CorrectMove);
+                SfxManager.Instance.Play(SfxId.WoodenBlockPlaced);
                 Destroy(droppedLetterBlock.gameObject);
                 base.Init(droppedLetter);
                 OnCorrectLetterDropped?.Invoke();

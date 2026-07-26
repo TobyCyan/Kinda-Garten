@@ -37,10 +37,26 @@ public class SfxManager : MonoBehaviour
             return;
         
         var source = GetSource();
+        ResetSource(source);
         source.clip = sfx.clip;
         source.Play();
 
         StartCoroutine(ReturnWhenDone(source));
+    }
+
+    public void PlayOnLoop(SfxId id)
+    {
+        if (!sfxDataById.TryGetValue(id, out var sfx))
+            return;
+        
+        if (sfx.clip == null)
+            return;
+        
+        var source = GetSource();
+        ResetSource(source);
+        source.clip = sfx.clip;
+        source.loop = true;
+        source.Play();
     }
 
     private AudioSource GetSource()
@@ -55,5 +71,16 @@ public class SfxManager : MonoBehaviour
     {
         yield return new WaitForSeconds(source.clip.length / Mathf.Abs(source.pitch));
         sourcePool.Enqueue(source);
+    }
+
+    private void ResetSource(AudioSource source)
+    {
+        source.Stop();
+        source.loop = false;
+        source.clip = null;
+        source.volume = 0.4f;
+        source.pitch = 1f;
+        source.spatialBlend = 0f;
+        source.mute = false;
     }
 }

@@ -16,6 +16,8 @@ public enum SfxId
     Penalty,
     LevelSuccess,
     GameOver,
-    CorrectMove,
     WrongMove,
+    WoodenBlockPlaced,
+    BackgroundMusic,
+    TrashCleaned,
 }

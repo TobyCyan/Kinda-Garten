@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SfxData_LevelSuccess
   m_EditorClassIdentifier: Assembly-CSharp::SfxData
   id: 5
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 12306dc957f902e498a5b63ddb6bc2c5, type: 3}

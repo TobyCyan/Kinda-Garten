@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: GameConfigs_Lvl1
   m_EditorClassIdentifier: Assembly-CSharp::GameConfigs
   IsKidSpawnActive: 1
-  MinNextSpawnTime: 1
-  MaxNextSpawnTime: 6
-  MinMoodTimer: 5
-  MaxMoodTimer: 10
-  MinCooldownTimer: 3
-  MaxCooldownTimer: 5
-  IsTrashPileSpawnActive: 1
+  MinNextSpawnTime: 10
+  MaxNextSpawnTime: 12
+  MinMoodTimer: 20
+  MaxMoodTimer: 25
+  MinCooldownTimer: 11
+  MaxCooldownTimer: 13
+  IsTrashPileSpawnActive: 0
   MinNextSpawnTimeTrashPile: 5
   MaxNextSpawnTimeTrashPile: 10
+  TrashPileCleanUpTime: 1

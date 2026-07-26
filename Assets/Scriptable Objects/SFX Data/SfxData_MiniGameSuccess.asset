@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SfxData_MiniGameSuccess
   m_EditorClassIdentifier: Assembly-CSharp::SfxData
   id: 2
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: a3a6c4a8b253cff41aec24de84893c96, type: 3}

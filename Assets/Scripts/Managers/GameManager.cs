@@ -14,15 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Instance = this;
 
         player = FindAnyObjectByType<PlayerController>();
         InitConfigs();
@@ -58,6 +50,8 @@ public class GameManager : MonoBehaviour
         miniGameManager.Init();
         penaltyManager.Init();
         uiManager.Init();
+
+        SfxManager.Instance.PlayOnLoop(SfxId.BackgroundMusic);
     }
 
     public bool IsCellOccupied(Vector3Int cell)

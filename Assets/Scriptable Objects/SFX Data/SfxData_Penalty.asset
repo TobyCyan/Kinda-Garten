@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SfxData_Penalty
   m_EditorClassIdentifier: Assembly-CSharp::SfxData
   id: 4
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 7f8ecd6d471b0db4bae1150cf538129c, type: 3}
