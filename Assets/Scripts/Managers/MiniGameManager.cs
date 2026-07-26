@@ -14,7 +14,7 @@ public class MiniGameManager : MonoBehaviour
     private MiniGameContext currentContext;
 
     public event Action OnMiniGameCompleted;
-
+    public event Action OnMiniGameStart;
     public void Init()
     {
         Instance = this;
@@ -49,6 +49,8 @@ public class MiniGameManager : MonoBehaviour
 
         currentContext = context;
         context.MoodTimerRef.OnTimerFinished += CompleteMiniGame;
+
+        OnMiniGameStart?.Invoke();
     }
 
     private void StopMiniGame()

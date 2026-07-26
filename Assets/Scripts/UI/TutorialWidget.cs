@@ -41,6 +41,7 @@ public class TutorialWidget : ScreenWidget
 
     protected override void OnOpenScreen()
     {
+        Time.timeScale = 0.0f;
     }
 
     private void OnNextClick()

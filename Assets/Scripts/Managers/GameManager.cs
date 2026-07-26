@@ -24,11 +24,15 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         penaltyManager.OnGameFailed += OnGameFailed;
+        miniGameManager.OnMiniGameStart += MiniGameManager_OnMiniGameStart;
+        miniGameManager.OnMiniGameCompleted += MiniGameManager_OnMiniGameCompleted;
     }
 
     private void OnDisable()
     {
         penaltyManager.OnGameFailed -= OnGameFailed;
+        miniGameManager.OnMiniGameStart -= MiniGameManager_OnMiniGameStart;
+        miniGameManager.OnMiniGameCompleted -= MiniGameManager_OnMiniGameCompleted;
     }
 
     private void InitConfigs()
@@ -48,10 +52,21 @@ public class GameManager : MonoBehaviour
         kidSpawnManager.Init();
         trashPileSpawnManager.Init();
         miniGameManager.Init();
+
         penaltyManager.Init();
         uiManager.Init();
 
         SfxManager.Instance.PlayOnLoop(SfxId.BackgroundMusic);
+    }
+
+    private void MiniGameManager_OnMiniGameCompleted()
+    {
+        uiManager.ShowBarWidget();
+    }
+
+    private void MiniGameManager_OnMiniGameStart()
+    {
+        uiManager.HideBarWidget();
     }
 
     public bool IsCellOccupied(Vector3Int cell)

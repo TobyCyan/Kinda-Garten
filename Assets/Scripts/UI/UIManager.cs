@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private WinWidget winWidget;
     [SerializeField] private ImageFadeWidget fadeWidget;
     [SerializeField] private InputActionReference pauseActionReference;
+    [SerializeField] private TutorialWidget tutorialWidget;
 
     [SerializeField] private DayProgressBarWidget progressBarWidget;
 
@@ -29,16 +31,34 @@ public class UIManager : MonoBehaviour
     public void InitConfigs()
     {
         progressBarWidget.Setup();
-        progressBarWidget.DayFinish += OpenWinScreen;
+        if(SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            progressBarWidget.DayFinish += OpenThankYouScreen;
+        }
+        else
+        {
+            progressBarWidget.DayFinish += OpenWinScreen;
+        }
     }
 
     public async void Init()
     {
-        pauseWdiget.OpenScreen();
-        pauseWdiget.StartWithCountdown();
+        if(tutorialWidget != null)
+        {
+            tutorialWidget.OpenScreen();
+            tutorialWidget.OnScreenClose += StartCountdown;
+        }
+        else
+        {
+            StartCountdown(null);
+        }
         await fadeWidget.FadeOut();
     }
-
+    private void StartCountdown(ScreenWidget wdiget)
+    {
+        pauseWdiget.OpenScreen();
+        pauseWdiget.StartWithCountdown();
+    }
     public void OpenGameOverScreen()
     {
         GameStates.IsGameFinish = true;
@@ -60,5 +80,15 @@ public class UIManager : MonoBehaviour
     {
         if (GameStates.IsGameFinish || GameStates.IsPaused) return;
         pauseWdiget.OpenScreen();
+    }
+
+    public void HideBarWidget()
+    {
+        progressBarWidget.HideBar();
+    }
+
+    public void ShowBarWidget()
+    {
+        progressBarWidget.ShowBar();
     }
 }
