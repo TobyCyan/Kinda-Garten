@@ -173,8 +173,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Trash on the floor can blocked paths and so make sure you pick them up
-    before it gets out of hand.
+  m_text: Trash on the floor can block paths. Hold Spacerbar to pick them up before
+    it gets out of hand.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83f9bb58f5d99b84f9226edc9ddbf383, type: 2}
   m_sharedMaterial: {fileID: -1025815210337123597, guid: 83f9bb58f5d99b84f9226edc9ddbf383, type: 2}

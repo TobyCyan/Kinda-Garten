@@ -204,7 +204,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Welcome to your first day at kinda-garten, your assistantce here is greatly
+  m_text: "Welcome to your first day at kinda-garten, your assistance here is greatly
     appreciated and to get you fill in quickly, \n\nHere is a quick rundown and how
     things work around here."
   m_isRightToLeft: 0
@@ -1816,17 +1816,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Interact with them and play one of the randomly selected mini games to
-    clam down them down.
+    clam them down.
 
 
-    Mini game aviaiable:
+    Mini game available:
 
     - Word Matching
 
     - Stamp
     Rally
 
-    - Claming Music'
+    - Calming Music'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83f9bb58f5d99b84f9226edc9ddbf383, type: 2}
   m_sharedMaterial: {fileID: -1025815210337123597, guid: 83f9bb58f5d99b84f9226edc9ddbf383, type: 2}
