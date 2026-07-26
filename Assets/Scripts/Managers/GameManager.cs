@@ -29,14 +29,14 @@ public class GameManager : MonoBehaviour
     {
         penaltyManager.OnGameFailed += OnGameFailed;
         miniGameManager.OnMiniGameStart += MiniGameManager_OnMiniGameStart;
-        miniGameManager.OnMiniGameCompleted += MiniGameManager_OnMiniGameCompleted;
+        miniGameManager.OnMiniGameFinished += MiniGameManager_OnMiniGameFinished;
     }
 
     private void OnDisable()
     {
         penaltyManager.OnGameFailed -= OnGameFailed;
         miniGameManager.OnMiniGameStart -= MiniGameManager_OnMiniGameStart;
-        miniGameManager.OnMiniGameCompleted -= MiniGameManager_OnMiniGameCompleted;
+        miniGameManager.OnMiniGameFinished -= MiniGameManager_OnMiniGameFinished;
     }
 
     private void InitConfigs()
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         SfxManager.Instance.PlayOnLoop(SfxId.BackgroundMusic);
     }
 
-    private void MiniGameManager_OnMiniGameCompleted()
+    private void MiniGameManager_OnMiniGameFinished()
     {
         uiManager.ShowBarWidget();
     }

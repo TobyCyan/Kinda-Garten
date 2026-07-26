@@ -572,7 +572,7 @@ PrefabInstance:
     - target: {fileID: 9006429345619803251, guid: 6f975378ac520bf41a428d41ad3be152, type: 3}
       propertyPath: tutorialWidget
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1679126077}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -4946,6 +4946,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4282803326784100418, guid: c7a31bcdd643af64cba41a0e2867a2c8, type: 3}
   m_PrefabInstance: {fileID: 1679126074}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1679126077 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4396128607644777614, guid: c7a31bcdd643af64cba41a0e2867a2c8, type: 3}
+  m_PrefabInstance: {fileID: 1679126074}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f86f547258a96fe4b80e5526344a23ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialWidget
 --- !u!1001 &1684007009
 PrefabInstance:
   m_ObjectHideFlags: 0

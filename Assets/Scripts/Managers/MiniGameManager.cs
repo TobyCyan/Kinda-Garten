@@ -15,6 +15,7 @@ public class MiniGameManager : MonoBehaviour
 
     public event Action OnMiniGameCompleted;
     public event Action OnMiniGameStart;
+    public event Action OnMiniGameFinished;
     public void Init()
     {
         Instance = this;
@@ -74,6 +75,7 @@ public class MiniGameManager : MonoBehaviour
     private void CompleteMiniGame()
     {
         OnMiniGameCompleted?.Invoke();
+        OnMiniGameFinished?.Invoke();
         OnMiniGameCompleted = null;
         StopMiniGame();
     }
