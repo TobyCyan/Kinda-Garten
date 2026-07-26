@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 28f1ccca3617ac9479c3e0624a35546c
+guid: 1252d6a65f0738c489432457db758684
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 475807208966947283
-    second: "\u2014Pngtree\u2014arrow icon in flat style_3548289_0"
+      213: -2267569165939939150
+    second: Kinda-Garten_Logo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u2014Pngtree\u2014arrow icon in flat style_3548289_0"
+      name: Kinda-Garten_Logo_0
       rect:
         serializedVersion: 2
-        x: 174
-        y: 75
-        width: 452
-        height: 650
+        x: 32
+        y: 34
+        width: 685
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d18b08b2286a9600800000000000000
-      internalID: 475807208966947283
+      spriteID: 2b865809bd9f780e0800000000000000
+      internalID: -2267569165939939150
       vertices: []
       indices: 
       edges: []
@@ -148,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u2014Pngtree\u2014arrow icon in flat style_3548289_0": 475807208966947283
+      Kinda-Garten_Logo_0: -2267569165939939150
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
