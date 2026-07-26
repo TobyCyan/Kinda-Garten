@@ -18,11 +18,11 @@ public class Seat : MiniGameTrigger
     {
         if (IsInteractable && IsOccupied) 
         {
-            TriggerMiniGame(Color);
+            TriggerMiniGame(Color, TriggerKidCooldown);
         }
     }
 
-    public void TriggerKidCooldown() 
+    private void TriggerKidCooldown() 
     {
         if (IsInteractable && IsOccupied) 
         {

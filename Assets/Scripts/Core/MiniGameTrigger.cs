@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 using static Seat;
 
 public class MiniGameTrigger : MonoBehaviour
 {
-    public void TriggerMiniGame(SeatColor seatColor)
+    public void TriggerMiniGame(SeatColor seatColor, Action callback)
     {
         if (MiniGameManager.Instance == null)
         {
@@ -11,5 +12,6 @@ public class MiniGameTrigger : MonoBehaviour
             return;
         }
         MiniGameManager.Instance.GenerateMiniGame(seatColor);
+        MiniGameManager.Instance.OnMiniGameCompleted += callback;
     }
 }
