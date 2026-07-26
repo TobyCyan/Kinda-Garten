@@ -9,12 +9,12 @@ public class MoodFormatter
     public static Color32 FormatMoodColor(float moodValue, float baseMoodValue)
     {
         float moodRatio = moodValue / baseMoodValue;
-        if (moodRatio >= 0.65f)
+        if (moodRatio >= 0.7f)
         {
             return MOOD_COLOR_HAPPY;
         }
         
-        if (moodRatio >= 0.4f)
+        if (moodRatio >= 0.35f)
         {
             return MOOD_COLOR_NEUTRAL;
         }
