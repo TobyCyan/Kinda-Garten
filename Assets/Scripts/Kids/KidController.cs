@@ -14,7 +14,7 @@ public class KidController : MonoBehaviour
     private float _currentCooldownTimer;
 
 
-    public event Action OnMoodTimerFinished;
+    public event Action<KidController> OnMoodTimerFinished;
     public event Action<KidController> OnCooldownTimerFinished;
 
     private bool _isInCooldown = false;
@@ -49,10 +49,9 @@ public class KidController : MonoBehaviour
 
             if (_currentMoodTimer > 0) return;
 
-            moodTimer.SetVisiblity(false);
             _currentMoodTimer = _baseMoodDuration;
             TriggerCooldown();
-            OnMoodTimerFinished?.Invoke();
+            OnMoodTimerFinished?.Invoke(this);
         }
 
     }
@@ -77,5 +76,13 @@ public class KidController : MonoBehaviour
     {
         _isInCooldown = true;
         moodTimer.SetVisiblity(false);
+    }
+
+    public void CrashoutAndRemove()
+    {
+        Debug.Log("Crashout");
+        //Trigger Animation
+        //Wait for few seconds
+        Destroy(this.gameObject);
     }
 }

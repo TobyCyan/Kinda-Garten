@@ -80,9 +80,10 @@ public class KidSpawnManager : MonoBehaviour
         }
     }
 
-    private void KidObject_OnMoodTimerFinished()
+    private void KidObject_OnMoodTimerFinished(KidController kidController)
     {
-
+        kidController.CrashoutAndRemove();
+        PenaltyManager.Instance.AddPenalty();
     }
 
     private void KidObject_OnCooldownTimerFinished(KidController kidController)
