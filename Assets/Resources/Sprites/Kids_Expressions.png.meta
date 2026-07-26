@@ -146,7 +146,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kids_Expressions_0
+      name: Crashout_Blue
       rect:
         serializedVersion: 2
         x: 10
@@ -168,7 +168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_1
+      name: Crashout_Pink
       rect:
         serializedVersion: 2
         x: 52
@@ -190,7 +190,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_2
+      name: Crashout_Purple
       rect:
         serializedVersion: 2
         x: 96
@@ -212,7 +212,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_3
+      name: Crashout_Green
       rect:
         serializedVersion: 2
         x: 133
@@ -234,7 +234,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_4
+      name: Sad_Blue
       rect:
         serializedVersion: 2
         x: 10
@@ -256,7 +256,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_5
+      name: Sad_Pink
       rect:
         serializedVersion: 2
         x: 52
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_6
+      name: Sad_Purple
       rect:
         serializedVersion: 2
         x: 96
@@ -300,7 +300,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_7
+      name: Sad_Green
       rect:
         serializedVersion: 2
         x: 133
@@ -322,7 +322,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_8
+      name: Happy_Blue
       rect:
         serializedVersion: 2
         x: 10
@@ -344,7 +344,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_9
+      name: Happy_Pink
       rect:
         serializedVersion: 2
         x: 52
@@ -366,7 +366,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_10
+      name: Happy_Purple
       rect:
         serializedVersion: 2
         x: 96
@@ -388,7 +388,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_11
+      name: Happy_Green
       rect:
         serializedVersion: 2
         x: 133
@@ -425,18 +425,18 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Kids_Expressions_0: 4571413006511163856
-      Kids_Expressions_1: 6303897531051476905
-      Kids_Expressions_10: 7217834112245859067
-      Kids_Expressions_11: -5957737783565904807
-      Kids_Expressions_2: -6440326857993782613
-      Kids_Expressions_3: 6522610762213082917
-      Kids_Expressions_4: -2839059466457689463
-      Kids_Expressions_5: 7729949110867176451
-      Kids_Expressions_6: -5152582245478370502
-      Kids_Expressions_7: -4021409797590631159
-      Kids_Expressions_8: 6956273168861095059
-      Kids_Expressions_9: -6019611123595775977
+      Crashout_Blue: 4571413006511163856
+      Crashout_Green: 6522610762213082917
+      Crashout_Pink: 6303897531051476905
+      Crashout_Purple: -6440326857993782613
+      Happy_Blue: 6956273168861095059
+      Happy_Green: -5957737783565904807
+      Happy_Pink: -6019611123595775977
+      Happy_Purple: 7217834112245859067
+      Sad_Blue: -2839059466457689463
+      Sad_Green: -4021409797590631159
+      Sad_Pink: 7729949110867176451
+      Sad_Purple: -5152582245478370502
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

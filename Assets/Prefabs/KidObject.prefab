@@ -94,6 +94,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KidController
   moodTimer: {fileID: 8874220855200818623}
+  kidVariations:
+  - {fileID: 6956273168861095059, guid: cd13ba34adcd119429a53e1f558a89f3, type: 3}
+  - {fileID: -5957737783565904807, guid: cd13ba34adcd119429a53e1f558a89f3, type: 3}
+  - {fileID: -6019611123595775977, guid: cd13ba34adcd119429a53e1f558a89f3, type: 3}
+  - {fileID: 7217834112245859067, guid: cd13ba34adcd119429a53e1f558a89f3, type: 3}
 --- !u!1 &8233517238685251727
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,7 +110,7 @@ GameObject:
   - component: {fileID: 5331362994286894416}
   - component: {fileID: 7758515092377186916}
   m_Layer: 0
-  m_Name: Kids_Expressions_11
+  m_Name: KidSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
