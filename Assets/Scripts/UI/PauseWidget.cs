@@ -21,6 +21,7 @@ public class PauseWdiget : ScreenWidget
     protected override void OnOpenScreen()
     {
         GameStates.IsPaused = true;
+        Time.timeScale = 0.0f;
         pauseContentGroup.SetActive(true);
         countdownText.gameObject.SetActive(false);
     }
@@ -54,6 +55,7 @@ public class PauseWdiget : ScreenWidget
             yield return new WaitForSecondsRealtime(0.5f);
 
             GameStates.IsPaused = false;
+            Time.timeScale = 1.0f;
             CloseScreen();
 
             yield break;
@@ -75,6 +77,7 @@ public class PauseWdiget : ScreenWidget
         yield return new WaitForSecondsRealtime(0.5f);
 
         GameStates.IsPaused = false;
+        Time.timeScale = 1.0f;
         CloseScreen();
     }
 }

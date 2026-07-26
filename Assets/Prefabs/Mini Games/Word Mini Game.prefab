@@ -373,33 +373,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_text
-      value: 'Definition Definition Definition Definition
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_fontSize
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 83f9bb58f5d99b84f9226edc9ddbf383, type: 2}
-    - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -1025815210337123597, guid: 83f9bb58f5d99b84f9226edc9ddbf383, type: 2}
-    - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_characterSpacing
-      value: 5.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
+      value: Definition Definition Definition Definition
       objectReference: {fileID: 0}
     - target: {fileID: 3162665039684539247, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_Pivot.x
@@ -427,11 +401,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3162665039684539247, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 2560
+      value: 395.4277
       objectReference: {fileID: 0}
     - target: {fileID: 3162665039684539247, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 90.2133
       objectReference: {fileID: 0}
     - target: {fileID: 3162665039684539247, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_LocalPosition.x
@@ -463,11 +437,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3162665039684539247, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 0.0000076294
       objectReference: {fileID: 0}
     - target: {fileID: 3162665039684539247, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 38
+      value: 51.3
       objectReference: {fileID: 0}
     - target: {fileID: 3162665039684539247, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -482,28 +456,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 570
-      objectReference: {fileID: 0}
-    - target: {fileID: 5640205088043131792, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      propertyPath: m_AnchoredPosition.x
+      value: -1.6829987
       objectReference: {fileID: 0}
     - target: {fileID: 7163783558966125779, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
       propertyPath: m_Name
@@ -514,6 +468,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
+--- !u!1 &3744530637193798837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7163783558966125779, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
+  m_PrefabInstance: {fileID: 5809047547355152486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8835778253398839075 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3027294670280511301, guid: 00eb2046205edb0479e571f84de63f97, type: 3}
@@ -590,6 +549,10 @@ PrefabInstance:
       propertyPath: definitionText
       value: 
       objectReference: {fileID: 8835778253398839075}
+    - target: {fileID: 7972332109534969770, guid: 2b2efafed80e85e46b472a7c3ead7c6c, type: 3}
+      propertyPath: definitionObject
+      value: 
+      objectReference: {fileID: 3744530637193798837}
     - target: {fileID: 7972332109534969770, guid: 2b2efafed80e85e46b472a7c3ead7c6c, type: 3}
       propertyPath: displayedRowCenter
       value: 
