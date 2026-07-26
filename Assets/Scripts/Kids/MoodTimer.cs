@@ -9,11 +9,12 @@ public class MoodTimer : MonoBehaviour
     public float BaseMoodTimer { get; private set; }
 
     public event Action<float> OnTimerUpdate;
+    public event Action OnTimerFinished;
 
     public void Init(float baseMoodTimer)
     {
         BaseMoodTimer = baseMoodTimer;
-        RefreshUI(baseMoodTimer);
+        UpdateTimer(baseMoodTimer);
     }
 
     public void SetVisiblity(bool isVisible)
@@ -21,7 +22,25 @@ public class MoodTimer : MonoBehaviour
         moddTimerObject.SetActive(isVisible);
     }
 
-    public void RefreshUI(float currentMoodTimer)
+    public void UpdateTimer(float newTimer)
+    {
+        RefreshUI(newTimer);
+    }
+
+    // Temporary, this method is called from KidController when the mood timer finishes,
+    // but ideally, all timer logic should be handled in this class.
+    public void InvokeOnTimerFinished()
+    {
+        OnTimerFinished?.Invoke();
+    }
+
+    public void CleanUp()
+    {
+        OnTimerUpdate = null;
+        OnTimerFinished = null;
+    }
+
+    private void RefreshUI(float currentMoodTimer)
     {
         int displayedTime = Mathf.Max(0, Mathf.CeilToInt(currentMoodTimer));
         moodTimerText.text = displayedTime.ToString();
