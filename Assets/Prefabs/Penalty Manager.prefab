@@ -29,8 +29,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 608569976155744632}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8565600927067863428
@@ -47,86 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PenaltyManager
   maximumPenalties: 3
   penaltyCrosses:
-  - {fileID: 6823281074693066621}
-  - {fileID: 6204774317882132825}
-  - {fileID: 1508487685772962106}
-  onGameFailed:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!1001 &4342321408491329175
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 118246124873404229}
-    m_Modifications:
-    - target: {fileID: 1158614590903684728, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_Name
-      value: Penalty Board
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.88
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.86
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
---- !u!4 &608569976155744632 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3760810782863409135, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-  m_PrefabInstance: {fileID: 4342321408491329175}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1508487685772962106 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2930787683166814125, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-  m_PrefabInstance: {fileID: 4342321408491329175}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6204774317882132825 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7663102426440261582, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-  m_PrefabInstance: {fileID: 4342321408491329175}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6823281074693066621 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7129813576097389034, guid: 1b085ea366cafbd44a7c95f55ae97bbc, type: 3}
-  m_PrefabInstance: {fileID: 4342321408491329175}
-  m_PrefabAsset: {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

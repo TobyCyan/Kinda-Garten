@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private KidSpawnManager kidSpawnManager;
     [SerializeField] private TrashPileSpawnManager trashPileSpawnManager;
     [SerializeField] private MiniGameManager miniGameManager;
+    [SerializeField] private PenaltyManager penaltyManager;
     private PlayerController player;
 
     [SerializeField] private GameConfigs gameConfigs;
@@ -27,6 +28,16 @@ public class GameManager : MonoBehaviour
         InitManagers();
     }
 
+    private void OnEnable()
+    {
+        penaltyManager.OnGameFailed += OnGameFailed;
+    }
+
+    private void OnDisable()
+    {
+        penaltyManager.OnGameFailed -= OnGameFailed;
+    }
+
     private void InitConfigs()
     {
         kidSpawnManager.InitConfigs(gameConfigs.IsKidSpawnActive,
@@ -43,6 +54,7 @@ public class GameManager : MonoBehaviour
         kidSpawnManager.Init();
         trashPileSpawnManager.Init();
         miniGameManager.Init();
+        penaltyManager.Init();
     }
 
     public bool IsCellOccupied(Vector3Int cell)
@@ -56,5 +68,11 @@ public class GameManager : MonoBehaviour
         {
             player.SetActive(isActive);
         }
+    }
+
+    private void OnGameFailed()
+    {
+        Debug.Log("Call game over uI");
+        // Call Game Over UI
     }
 }
