@@ -32,7 +32,10 @@ public class SfxManager : MonoBehaviour
     {
         if (!sfxDataById.TryGetValue(id, out var sfx))
             return;
-
+        
+        if (sfx.clip == null)
+            return;
+        
         var source = GetSource();
         source.clip = sfx.clip;
         source.Play();
