@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 14346482ea08db34fbb3bda5ae19759b
+guid: 4c55dd2be45fd90439152768b8f90e63
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8421349928461831103
-    second: WoodenCase_0
+      213: 1431126550438697996
+    second: PlayerIdleHeadbob_0
+  - first:
+      213: 6637518063641846303
+    second: PlayerIdleHeadbob_1
+  - first:
+      213: 4712830191628343031
+    second: PlayerIdleHeadbob_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -74,7 +80,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,7 +106,7 @@ TextureImporter:
     buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WoodenCase_0
+      name: PlayerIdleHeadbob_0
       rect:
         serializedVersion: 2
-        x: 2
-        y: 7
-        width: 196
-        height: 91
+        x: 7
+        y: 119
+        width: 30
+        height: 54
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fbb8a374425aed470800000000000000
-      internalID: 8421349928461831103
+      spriteID: c0c5783e3026cd310800000000000000
+      internalID: 1431126550438697996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerIdleHeadbob_1
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 60
+        width: 29
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f126c9503833d1c50800000000000000
+      internalID: 6637518063641846303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayerIdleHeadbob_2
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 1
+        width: 30
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f65eb2f616576140800000000000000
+      internalID: 4712830191628343031
       vertices: []
       indices: 
       edges: []
@@ -148,7 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WoodenCase_0: 8421349928461831103
+      PlayerIdleHeadbob_0: 1431126550438697996
+      PlayerIdleHeadbob_1: 6637518063641846303
+      PlayerIdleHeadbob_2: 4712830191628343031
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

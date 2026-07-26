@@ -142,11 +142,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_0
+      name: Crashout_Blue_Bob
       rect:
         serializedVersion: 2
         x: 7
@@ -168,7 +181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_1
+      name: Crashout_Pink_Bob
       rect:
         serializedVersion: 2
         x: 50
@@ -190,7 +203,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_2
+      name: Crashout_Purple_Bob
       rect:
         serializedVersion: 2
         x: 93
@@ -212,7 +225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_3
+      name: Crashout_Green_Bob
       rect:
         serializedVersion: 2
         x: 133
@@ -234,7 +247,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_4
+      name: Sad_Blue_Bob
       rect:
         serializedVersion: 2
         x: 7
@@ -256,7 +269,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_5
+      name: Sad_Pink_Bob
       rect:
         serializedVersion: 2
         x: 50
@@ -278,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_6
+      name: Sad_Purple_Bob
       rect:
         serializedVersion: 2
         x: 93
@@ -300,7 +313,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_7
+      name: Sad_Green_Bob
       rect:
         serializedVersion: 2
         x: 133
@@ -322,7 +335,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_8
+      name: Happy_Blue_Bob
       rect:
         serializedVersion: 2
         x: 7
@@ -344,7 +357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_9
+      name: Happy_Pink_Bob
       rect:
         serializedVersion: 2
         x: 50
@@ -366,7 +379,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_10
+      name: Happy_Purple_Bob
       rect:
         serializedVersion: 2
         x: 93
@@ -388,7 +401,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Kids_Expressions_Head_Bob_11
+      name: Happy_Green_Bob
       rect:
         serializedVersion: 2
         x: 133
@@ -423,18 +436,18 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kids_Expressions_Head_Bob_0: 2014295746040643566
-      Kids_Expressions_Head_Bob_1: 3016145743538756179
-      Kids_Expressions_Head_Bob_10: 5905785587851280404
-      Kids_Expressions_Head_Bob_11: 3964155037828787132
-      Kids_Expressions_Head_Bob_2: -8580908505837279442
-      Kids_Expressions_Head_Bob_3: -7386702793152781347
-      Kids_Expressions_Head_Bob_4: -7254640467414562046
-      Kids_Expressions_Head_Bob_5: 5214849803093935313
-      Kids_Expressions_Head_Bob_6: 659151810707084236
-      Kids_Expressions_Head_Bob_7: -1046454335828550721
-      Kids_Expressions_Head_Bob_8: -200273540366489230
-      Kids_Expressions_Head_Bob_9: -4516085079777095252
+      Crashout_Blue_Bob: 2014295746040643566
+      Crashout_Green_Bob: -7386702793152781347
+      Crashout_Pink_Bob: 3016145743538756179
+      Crashout_Purple_Bob: -8580908505837279442
+      Happy_Blue_Bob: -200273540366489230
+      Happy_Green_Bob: 3964155037828787132
+      Happy_Pink_Bob: -4516085079777095252
+      Happy_Purple_Bob: 5905785587851280404
+      Sad_Blue_Bob: -7254640467414562046
+      Sad_Green_Bob: -1046454335828550721
+      Sad_Pink_Bob: 5214849803093935313
+      Sad_Purple_Bob: 659151810707084236
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
