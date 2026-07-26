@@ -20,7 +20,9 @@ public class MoodTimerUI : MonoBehaviour
 
     private void RefreshUI(float currentMoodTimer)
     {
-        moodTimerText.text = currentMoodTimer.ToString("F0");
+        int displayedTime = Mathf.Max(0, Mathf.CeilToInt(currentMoodTimer));
+        moodTimerText.text = displayedTime.ToString();
+        moodTimerText.color = MoodFormatter.FormatMoodColor(displayedTime, moodTimer.BaseMoodTimer);
     }
 
     public void CleanUp()
