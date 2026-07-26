@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoodTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshPro moodTimerText;
-    [SerializeField] private GameObject moddTimerObject;
+    [SerializeField] private GameObject moodTimerObject;
     public float BaseMoodTimer { get; private set; }
 
     public event Action<float> OnTimerUpdate;
@@ -19,7 +19,7 @@ public class MoodTimer : MonoBehaviour
 
     public void SetVisiblity(bool isVisible)
     {
-        moddTimerObject.SetActive(isVisible);
+        moodTimerObject.SetActive(isVisible);
     }
 
     public void UpdateTimer(float newTimer)
