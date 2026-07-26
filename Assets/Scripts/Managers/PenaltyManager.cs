@@ -16,9 +16,6 @@ public class PenaltyManager : MonoBehaviour
     [Tooltip("Assign the three cross images in order. They should start inactive.")]
     [SerializeField] private GameObject[] penaltyCrosses;
 
-    [Header("Inspector Events")]
-    [SerializeField] private UnityEvent onGameFailed;
-
     public int PenaltyCount { get; private set; }
     public int MaximumPenalties => maximumPenalties;
     public bool HasGameFailed { get; private set; }
@@ -27,7 +24,7 @@ public class PenaltyManager : MonoBehaviour
     public event Action<int> OnPenaltyCountChanged;
     public event Action OnGameFailed;
 
-    private void Awake()
+    public void Init()
     {
         if (Instance != null && Instance != this)
         {
@@ -47,10 +44,6 @@ public class PenaltyManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Call this once when a kid's mood timer completes.
-    /// This method can also be connected directly to a UnityEvent in the Inspector.
-    /// </summary>
     public void AddPenalty()
     {
         if (HasGameFailed)
@@ -68,9 +61,6 @@ public class PenaltyManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Starts a new run with no penalties.
-    /// </summary>
     public void ResetPenalties()
     {
         PenaltyCount = 0;
@@ -97,8 +87,8 @@ public class PenaltyManager : MonoBehaviour
 
     private void FailGame()
     {
+        Debug.Log("FailGame");
         HasGameFailed = true;
         OnGameFailed?.Invoke();
-        onGameFailed?.Invoke();
     }
 }
