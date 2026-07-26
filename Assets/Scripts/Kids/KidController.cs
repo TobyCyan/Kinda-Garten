@@ -64,7 +64,7 @@ public class KidController : MonoBehaviour
 
         _baseCooldownDuration = cooldownDuration;
 
-        moodTimer.RefreshUI(moodDuration);
+        moodTimer.Init(moodDuration);
 
         if(!_isFirstInit)
         {
