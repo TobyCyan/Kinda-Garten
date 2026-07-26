@@ -11,22 +11,9 @@ public class MiniGameManager : MonoBehaviour
     private List<IMiniGameMaster> gameMasters = new();
     private IMiniGameMaster currentGameMaster;
 
-    private void Awake()
+    public void Init()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        Init();
-    }
-
-    private void Init()
-    {
+        Instance = this;
         gameMasters = new List<IMiniGameMaster>(FindObjectsByType<MonoBehaviour>().OfType<IMiniGameMaster>());
         miniGameView.HideView();
         foreach (var gameMaster in gameMasters)
@@ -49,6 +36,7 @@ public class MiniGameManager : MonoBehaviour
             return;
         }
 
+        GameManager.Instance.SetPlayerActiveStatus(false);
         miniGameView.ShowView(seatColor);
 
         currentGameMaster = gameMaster;
@@ -68,5 +56,6 @@ public class MiniGameManager : MonoBehaviour
         currentGameMaster = null;
 
         miniGameView.HideView();
+        GameManager.Instance.SetPlayerActiveStatus(true);
     }
 }

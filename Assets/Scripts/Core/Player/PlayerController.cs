@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private InputActionReference interactActionReference;
     [SerializeField] private Tilemap walkable;
     [SerializeField] private Tilemap obstacle;
-
+    private bool isActive = true;
     private Vector3 targetWorldPos;
     private bool isMoving = false;
 
@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (!isActive) { return; }
+        
         if (isHolding)
         {
             currentHoldInteractable?.DoWhileHold();
@@ -80,6 +82,11 @@ public class PlayerController : MonoBehaviour
         return true;
     }
 
+    public void SetActive(bool isActive)
+    {
+        this.isActive = isActive;
+    }
+
     private void OnEnable()
     {
         moveActionReference.action.Enable();
@@ -106,10 +113,9 @@ public class PlayerController : MonoBehaviour
         interactActionReference.action.Disable();
     }
 
-    //Should TriggerMiniGame for Mini Game Integration
     private void OnInteractPerformed(InputAction.CallbackContext ctx) 
     {
-        currentInteractableSeat.TriggerKidCooldown();
+        currentInteractableSeat.TriggerMiniGame();
     }
 
     private void OnMovePerformed(InputAction.CallbackContext ctx)

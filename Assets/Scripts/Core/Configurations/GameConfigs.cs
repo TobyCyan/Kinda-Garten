@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameConfigs : ScriptableObject
 {
     [Header("Kid Spawn Manager Configs")]
-    public bool IsKidSpawnActive;
+    public bool IsKidSpawnActive = true;
     public float MinNextSpawnTime = 1.0f;
     public float MaxNextSpawnTime = 6.0f;
     public float MinMoodTimer = 5.0f;
@@ -16,4 +16,5 @@ public class GameConfigs : ScriptableObject
     public bool IsTrashPileSpawnActive;
     public float MinNextSpawnTimeTrashPile = 5.0f;
     public float MaxNextSpawnTimeTrashPile = 10.0f;
+    public float TrashPileCleanUpTime = 1.0f;
 }
