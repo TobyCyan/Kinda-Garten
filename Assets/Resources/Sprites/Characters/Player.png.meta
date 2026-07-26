@@ -150,15 +150,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_0
+      name: Front
       rect:
         serializedVersion: 2
-        x: 7
-        y: 118
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 8
+        y: 120
+        width: 28
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,12 +175,12 @@ TextureImporter:
       name: Player_1
       rect:
         serializedVersion: 2
-        x: 50
-        y: 118
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 51
+        y: 119
+        width: 28
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -197,12 +197,12 @@ TextureImporter:
       name: Player_2
       rect:
         serializedVersion: 2
-        x: 94
-        y: 118
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 97
+        y: 119
+        width: 28
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -216,15 +216,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_3
+      name: Side
       rect:
         serializedVersion: 2
-        x: 6
-        y: 59
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 9
+        y: 61
+        width: 27
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -241,12 +241,12 @@ TextureImporter:
       name: Player_4
       rect:
         serializedVersion: 2
-        x: 50
-        y: 59
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 53
+        y: 60
+        width: 27
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -263,12 +263,12 @@ TextureImporter:
       name: Player_5
       rect:
         serializedVersion: 2
-        x: 94
-        y: 59
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 95
+        y: 60
+        width: 31
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -282,15 +282,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_6
+      name: Back
       rect:
         serializedVersion: 2
-        x: 6
-        y: 0
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 8
+        y: 2
+        width: 28
+        height: 53
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -307,12 +307,12 @@ TextureImporter:
       name: Player_7
       rect:
         serializedVersion: 2
-        x: 50
-        y: 0
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 53
+        y: 1
+        width: 27
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -329,12 +329,12 @@ TextureImporter:
       name: Player_8
       rect:
         serializedVersion: 2
-        x: 94
-        y: 0
-        width: 33
-        height: 56
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 96
+        y: 1
+        width: 27
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -359,17 +359,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Player_0: -2311659948842064771
+      Back: -7446026091647042388
+      Front: -2311659948842064771
       Player_1: 7364682651488144517
       Player_2: -6287787046888575383
-      Player_3: -1182821291677670348
       Player_4: -4709456396536258026
       Player_5: -4529042392078601758
-      Player_6: -7446026091647042388
       Player_7: 5938012242645255967
       Player_8: -4245738604243887485
+      Side: -1182821291677670348
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
