@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SfxData_ButtonClick
   m_EditorClassIdentifier: Assembly-CSharp::SfxData
   id: 0
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 6a116e28d17a84f459559ef88d76f9e7, type: 3}

@@ -245,4 +245,9 @@ public class StampRallyGameMaster : MonoBehaviour, IMiniGameMaster
             stampButtons[i].onClick.RemoveAllListeners();
         }
     }
+
+    public void OnButtonClick()
+    {
+        SfxManager.Instance.Play(SfxId.ButtonClick);
+    }
 }
